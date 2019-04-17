@@ -400,6 +400,14 @@ void Function::compute_loops(){
 
   /* A REMPLIR */
 
+  for (auto bb : _myBB){
+	for (int i=0;i<bb->get_nb_succ();i++){
+		Basic_block * bb_successor = bb->get_successor(i);
+		if (bb->Domin[bb_successor->get_index()]) {
+			_myLoop.push_back(new Loop(bb_successor,bb));;
+		}
+	}
+  }
   return;
 }
 
