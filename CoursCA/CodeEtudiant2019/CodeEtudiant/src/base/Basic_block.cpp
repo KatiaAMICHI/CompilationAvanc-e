@@ -365,54 +365,44 @@ void Basic_block::comput_pred_succ_dep(){
 
 	   while(current_inst){
 		  int num_reg = 0;
+		  bool raw1 = 0, raw2 = 0, waw = 0;
 		   for (tmp_inst = current_inst->get_prev(); tmp_inst ; tmp_inst= tmp_inst->get_prev()) {
 
-			   if (tmp_inst->is_dep_RAW1(current_inst) && !(num_reg & 1)){
+			   if (tmp_inst->is_dep_RAW1(current_inst) && !raw1){
 				   add_dep_link(tmp_inst, current_inst, t_Dep::RAW);
-				   num_reg |= 1;
+				   raw1 = 1;
 			   }
-
-			   if(tmp_inst->is_dep_RAW2(current_inst) && !(num_reg & 2)){
+			   if(tmp_inst->is_dep_RAW2(current_inst) && ! raw2){
 				   add_dep_link(tmp_inst, current_inst, t_Dep::RAW);
-				   num_reg |= 2;
+				   raw2 = 1;
 			   }
-
-			   if(tmp_inst->is_dep_WAR1(current_inst) && !(num_reg & 1)){
+			   if(tmp_inst->is_dep_WAR(current_inst) && !waw){
 				   add_dep_link(tmp_inst, current_inst, t_Dep::WAR);
-				   num_reg |= 1;
+			   	   waw = 1;
 			   }
-
-			   if(tmp_inst->is_dep_WAR2(current_inst) && !(num_reg & 1)){
-				   add_dep_link(tmp_inst, current_inst, t_Dep::WAR);
-				   num_reg |= 1;
-			   }
-
-			   if (tmp_inst->is_dep_MEM(current_inst) && !(num_reg & 4)) {
+			   if (tmp_inst->is_dep_MEM(current_inst) ){
 				   add_dep_link(tmp_inst, current_inst, t_Dep::MEMDEP);
-				   num_reg|= 4;
 			   }
-			   if (tmp_inst->is_dep_WAW(current_inst) && !(num_reg & 8)) {
+			   if (tmp_inst->is_dep_WAW(current_inst) && !waw){
 				   add_dep_link(tmp_inst, current_inst, t_Dep::WAW);
-				   num_reg|= 8;
+				   waw = 1;
 			   }
-
 		  }
 			  current_inst=current_inst->get_prev();
 
 	   }
+
 	   tmp_inst = get_last_instruction()->get_prev();
-	       if (tmp_inst->is_branch()) {
-	         for (int i = 0; i < get_nb_inst() - 2; i++) {
-	       	 current_inst = get_instruction_at_index(i);
-	       	 if (current_inst->get_nb_succ() == 0)
-	       	  add_dep_link(current_inst, tmp_inst, t_Dep::CONTROL);
-	         }
-	       }
+	   if (tmp_inst->is_branch()) {
+		 for (int i = 0; i < get_nb_inst() - 2; i++) {
+			 current_inst = get_instruction_at_index(i);
+			 if (current_inst->get_nb_succ() == 0)
+			  add_dep_link(current_inst, tmp_inst, t_Dep::CONTROL);
+		 }
+	   }
    }
 
-   // FIN A REMPLIR
 
-   // NE PAS ENLEVER : cette fonction ne doit �tre appel�e qu'une seule fois
    dep_done = true;
    return;
 }
