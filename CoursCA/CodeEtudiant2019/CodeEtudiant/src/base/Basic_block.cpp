@@ -449,29 +449,27 @@ int Basic_block::nb_cycles(){
    }
 
    int exect = 0;
-   int cycle;
-
 
    Instruction* ic;
 
-   inst_cycle[0] = 1; // 1ere instr sort au cycle 1.
+   inst_cycle[0] = 1;
 
    // TODO change for to while !
    for (int i = 1; i < get_nb_inst(); i++) {
          ic = get_instruction_at_index(i);
-         cycle = inst_cycle[i-1] + 1;
+         exect = inst_cycle[i-1] + 1;
 
          for (int j = 0; j < ic->get_nb_pred(); j++) {
            Instruction *prev = ic->get_pred_dep(j)->inst;
            if (ic->is_dep_WAR(prev) || ic->is_dep_RAW(prev)) {
-             cycle = max(cycle, inst_cycle[prev->get_index()] + delai(ic->get_type(), prev->get_type()));
+        	   exect = max(exect, inst_cycle[prev->get_index()] + delai(ic->get_type(), prev->get_type()));
            }
          }
-         inst_cycle[i] = cycle;
+         inst_cycle[i] = exect;
    }
 
 	#ifdef DEBUG
-		cout << "********************************* nb_cycle : " << cycle << endl;
+		cout <<  endl;
 	#endif
 
 	// jai 11 cycle pour l'exemple du td, dans le td c'est 10 donc a vérifier si ta pas un + 1 quelque part
@@ -495,7 +493,9 @@ void Basic_block::compute_use_def(void){
   if (use_def_done) return;
 
   /* A REMPLIR */
+  for (Instruction *inst = get_first_instruction(); inst != NULL; inst = inst->get_next()) {
 
+  }
 
 
   /* FIN A REMPLIR */
