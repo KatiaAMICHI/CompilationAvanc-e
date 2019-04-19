@@ -484,7 +484,9 @@ calcule DEF et USE pour l'analyse de registre vivant
 � la fin on doit avoir
  USE[i] vaut 1 si $i est utilis� (lu) dans le bloc avant d'�tre potentiellement d�fini dans le bloc
  DEF[i] vaut 1 si $i est d�fini (�crit) dans le bloc
-ne pas oublier les conventions d'appel : les registres $4, $5, $6, $7 peuvent contenir des param�tres (du 1er au 4eme les autres sont sur la pile) avant un appel de fonctions, au retour d'une fonction $2 a �t� �crit car il contient la valeur de retour (sauf si on rend void).
+ne pas oublier les conventions d'appel : les registres $4, $5, $6, $7 peuvent contenir des param�tres
+ (du 1er au 4eme les autres sont sur la pile) avant un appel de fonctions, au retour d'une fonction $2
+  a �t� �crit car il contient la valeur de retour (sauf si on rend void).
 Un appel de fonction (call) �crit aussi l'adresse de retour dans $31 donc d�finit implicitement $31.
 
 ******************/
@@ -492,12 +494,51 @@ Un appel de fonction (call) �crit aussi l'adresse de retour dans $31 donc d�
 void Basic_block::compute_use_def(void){
   if (use_def_done) return;
 
+  OPRegister * reg_src1, * reg_src2, * reg_dst;
+
   /* A REMPLIR */
   for (Instruction *inst = get_first_instruction(); inst != NULL; inst = inst->get_next()) {
+	if (inst->is_call()) { /* appel de fonction (jal) */
+		Def[31] = 1;
+		Def[2]  = 1;
+		// Utilisation des registres 4, 5, 6
+		for (int i = 4; i <= 6; i++)
+		  if (!Def[i])
+			Use[i] = 1;
+	}
+	reg_src1 = inst->get_reg_src1();
+
+	if (reg_src1)
+		if (!Def[reg_src1->get_reg_num()])
+			Use[reg_src1->get_reg_num()] = 1;
+
+	reg_src2 = inst->get_reg_src2();
+	if (reg_src2)
+		if (!Def[reg_src2->get_reg_num()])
+			Use[reg_src2->get_reg_num()] = 1;
+
+	reg_dst = inst->get_reg_dst();
+	if (reg_dst)
+		Def[reg_dst->get_reg_num()] = 1;
 
   }
-
-
+  /*
+	#ifdef DEBUG
+	  cout << "****** BB " << get_index() << "************" << endl;
+	  cout << "USE : " ;
+	  for(int i=0; i<NB_REG; i++){
+		  if (Use[i])
+			  cout << "$"<< i << " ";
+	  }
+	  cout << endl;
+	  cout << "DEF : " ;
+	  for(int i=0; i<NB_REG; i++){
+		  if (Def[i])
+		cout << "$"<< i << " ";
+		}
+	  cout << endl;
+	#endif
+	*/
   /* FIN A REMPLIR */
     return;
 }
