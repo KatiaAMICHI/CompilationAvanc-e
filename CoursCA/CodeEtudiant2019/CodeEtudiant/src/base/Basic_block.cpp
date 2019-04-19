@@ -506,8 +506,8 @@ void Basic_block::compute_use_def(void){
 		  if (!Def[i])
 			Use[i] = 1;
 	}
-	reg_src1 = inst->get_reg_src1();
 
+	reg_src1 = inst->get_reg_src1();
 	if (reg_src1)
 		if (!Def[reg_src1->get_reg_num()])
 			Use[reg_src1->get_reg_num()] = 1;
@@ -522,23 +522,6 @@ void Basic_block::compute_use_def(void){
 		Def[reg_dst->get_reg_num()] = 1;
 
   }
-  /*
-	#ifdef DEBUG
-	  cout << "****** BB " << get_index() << "************" << endl;
-	  cout << "USE : " ;
-	  for(int i=0; i<NB_REG; i++){
-		  if (Use[i])
-			  cout << "$"<< i << " ";
-	  }
-	  cout << endl;
-	  cout << "DEF : " ;
-	  for(int i=0; i<NB_REG; i++){
-		  if (Def[i])
-		cout << "$"<< i << " ";
-		}
-	  cout << endl;
-	#endif
-	*/
   /* FIN A REMPLIR */
     return;
 }

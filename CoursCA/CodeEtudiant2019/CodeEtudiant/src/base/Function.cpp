@@ -420,20 +420,62 @@ void Function::display_loops(){
 }
 
 void Function::compute_live_var(){
- 
+
   list<Basic_block*> workinglist;
-  bool change = true;
- 
-   
 
   /* A REMPLIR avec algo vu en cours et en TD*/
- /* algorithme it�ratif qui part des blocs sans successeur, ne pas oublier que lorsque l'on sort d'une fonction le registre $2 contient le r�sultat (il est donc vivant), le registre pointeur de pile ($29) est aussi vivant ! */
+  /* algorithme it�ratif qui part des blocs sans successeur, ne pas oublier que lorsque l'on sort
+   * d'une fonction le registre $2 contient le r�sultat (il est donc vivant), le registre pointeur
+   * de pile ($29) est aussi vivant !
+   * */
+
+  list<Basic_block*>::iterator bb_it, bb_it2;
+  Basic_block *bb_curr, *bb_tmp, *bb_pred;
+  bool change = true;
+
+  int size= (int) _myBB.size();
+  bb_it=_myBB.begin();
+
+  for (int i = 0; i < size; i++) {
+    if ((*bb_it)->get_nb_succ() == 0)
+    	workinglist.push_back(*bb_it);
+    (*bb_it++)->compute_use_def();
+  }
+  while (!workinglist.empty()) {
+	 // récupérer la première référence de l'entête de note workinglist
+     bb_curr = workinglist.front();
+     workinglist.pop_front();
+
+     // LiveOut (pas sur :/ à revoir !)
+	 if (bb_curr->get_nb_succ() != 0) {
+	   for (int i = 0; i < bb_curr->get_nb_succ(); i++) {
+		   bb_curr->LiveOut[i] = bb_curr->LiveOut[i] || bb_curr->LiveIn[i];
+	   }
+	 } else {
+	   if (bb_curr->get_branch())
+		 bb_curr->LiveOut[2] = 1;
+	 }
+
+	 // LiveIn
+	 for (int i = 0; i < NB_REG; i++)
+	   bb_curr->LiveIn[i] = bb_curr->Use[i] || (bb_curr->LiveOut[i] && !bb_curr->Def[i]);
+
+
+	 // working list
+	 /*
+	 for (int i = 0; i < bb_curr->get_nb_pred(); i++) {
+	   bb_pred = bb_curr->get_predecessor(i);
+
+	 }*/
+  }
 
 
  
 
  // fin � REMPLIR
 }
+
+
 
 void Function::show_live_var(void){
   // Affichage du resultat
