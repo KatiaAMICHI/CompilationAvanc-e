@@ -1,9 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.3.2.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2019 Free Software Foundation,
-   Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -41,14 +40,11 @@
    define necessary library symbols; they are noted "INFRINGES ON
    USER NAME SPACE" below.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
-
 /* Identify Bison output.  */
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.3.2"
+#define YYBISON_VERSION "3.0.4"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -71,8 +67,8 @@
 #define yynerrs         asm_mipsnerrs
 
 
-/* First part of user prologue.  */
-#line 10 "asm_mips.yac" /* yacc.c:337  */
+/* Copy the first part of user declarations.  */
+#line 10 "asm_mips.yac" /* yacc.c:339  */
 
 #include <iostream>
 #include <Program.h>
@@ -124,16 +120,13 @@ static void yyerror (char * str)
 	{ std::cout << "yyerror at line " << ASM_LINENO << " : " << str <<std::endl ;	}
 
 
-#line 128 "y.tab.c" /* yacc.c:337  */
+#line 124 "y.tab.c" /* yacc.c:339  */
+
 # ifndef YY_NULLPTR
-#  if defined __cplusplus
-#   if 201103L <= __cplusplus
-#    define YY_NULLPTR nullptr
-#   else
-#    define YY_NULLPTR 0
-#   endif
+#  if defined __cplusplus && 201103L <= __cplusplus
+#   define YY_NULLPTR nullptr
 #  else
-#   define YY_NULLPTR ((void*)0)
+#   define YY_NULLPTR 0
 #  endif
 # endif
 
@@ -315,14 +308,14 @@ extern int asm_mipsdebug;
 
 union YYSTYPE
 {
-#line 63 "asm_mips.yac" /* yacc.c:352  */
+#line 63 "asm_mips.yac" /* yacc.c:355  */
 
   struct utchn  *pchn    ;
   unsigned int   uval    ;
   char          *text    ;
   
 
-#line 326 "y.tab.c" /* yacc.c:352  */
+#line 319 "y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -336,7 +329,9 @@ int asm_mipsparse (void);
 
 #endif /* !YY_ASM_MIPS_Y_TAB_H_INCLUDED  */
 
+/* Copy the second part of user declarations.  */
 
+#line 335 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -357,13 +352,13 @@ typedef signed char yytype_int8;
 #ifdef YYTYPE_UINT16
 typedef YYTYPE_UINT16 yytype_uint16;
 #else
-typedef unsigned short yytype_uint16;
+typedef unsigned short int yytype_uint16;
 #endif
 
 #ifdef YYTYPE_INT16
 typedef YYTYPE_INT16 yytype_int16;
 #else
-typedef short yytype_int16;
+typedef short int yytype_int16;
 #endif
 
 #ifndef YYSIZE_T
@@ -375,7 +370,7 @@ typedef short yytype_int16;
 #  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYSIZE_T size_t
 # else
-#  define YYSIZE_T unsigned
+#  define YYSIZE_T unsigned int
 # endif
 #endif
 
@@ -411,6 +406,15 @@ typedef short yytype_int16;
 # define YY_ATTRIBUTE_UNUSED YY_ATTRIBUTE ((__unused__))
 #endif
 
+#if !defined _Noreturn \
+     && (!defined __STDC_VERSION__ || __STDC_VERSION__ < 201112)
+# if defined _MSC_VER && 1200 <= _MSC_VER
+#  define _Noreturn __declspec (noreturn)
+# else
+#  define _Noreturn YY_ATTRIBUTE ((__noreturn__))
+# endif
+#endif
+
 /* Suppress unused-variable warnings by "using" E.  */
 #if ! defined lint || defined __GNUC__
 # define YYUSE(E) ((void) (E))
@@ -418,7 +422,7 @@ typedef short yytype_int16;
 # define YYUSE(E) /* empty */
 #endif
 
-#if defined __GNUC__ && ! defined __ICC && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
 /* Suppress an incorrect diagnostic about yylval being uninitialized.  */
 # define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
     _Pragma ("GCC diagnostic push") \
@@ -580,16 +584,16 @@ union yyalloc
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  319
 
+/* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
+   by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   329
 
-/* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
-   as returned by yylex, with out-of-bounds checking.  */
 #define YYTRANSLATE(YYX)                                                \
-  ((unsigned) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+  ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
 /* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
-   as returned by yylex.  */
+   as returned by yylex, without out-of-bounds checking.  */
 static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -1015,22 +1019,22 @@ static const yytype_uint8 yyr2[] =
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
-#define YYBACKUP(Token, Value)                                    \
-  do                                                              \
-    if (yychar == YYEMPTY)                                        \
-      {                                                           \
-        yychar = (Token);                                         \
-        yylval = (Value);                                         \
-        YYPOPSTACK (yylen);                                       \
-        yystate = *yyssp;                                         \
-        goto yybackup;                                            \
-      }                                                           \
-    else                                                          \
-      {                                                           \
-        yyerror (YY_("syntax error: cannot back up")); \
-        YYERROR;                                                  \
-      }                                                           \
-  while (0)
+#define YYBACKUP(Token, Value)                                  \
+do                                                              \
+  if (yychar == YYEMPTY)                                        \
+    {                                                           \
+      yychar = (Token);                                         \
+      yylval = (Value);                                         \
+      YYPOPSTACK (yylen);                                       \
+      yystate = *yyssp;                                         \
+      goto yybackup;                                            \
+    }                                                           \
+  else                                                          \
+    {                                                           \
+      yyerror (YY_("syntax error: cannot back up")); \
+      YYERROR;                                                  \
+    }                                                           \
+while (0)
 
 /* Error token number */
 #define YYTERROR        1
@@ -1070,37 +1074,37 @@ do {                                                                      \
 } while (0)
 
 
-/*-----------------------------------.
-| Print this symbol's value on YYO.  |
-`-----------------------------------*/
+/*----------------------------------------.
+| Print this symbol's value on YYOUTPUT.  |
+`----------------------------------------*/
 
 static void
-yy_symbol_value_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
 {
-  FILE *yyoutput = yyo;
-  YYUSE (yyoutput);
+  FILE *yyo = yyoutput;
+  YYUSE (yyo);
   if (!yyvaluep)
     return;
 # ifdef YYPRINT
   if (yytype < YYNTOKENS)
-    YYPRINT (yyo, yytoknum[yytype], *yyvaluep);
+    YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
 # endif
   YYUSE (yytype);
 }
 
 
-/*---------------------------.
-| Print this symbol on YYO.  |
-`---------------------------*/
+/*--------------------------------.
+| Print this symbol on YYOUTPUT.  |
+`--------------------------------*/
 
 static void
-yy_symbol_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
 {
-  YYFPRINTF (yyo, "%s %s (",
+  YYFPRINTF (yyoutput, "%s %s (",
              yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
-  yy_symbol_value_print (yyo, yytype, yyvaluep);
-  YYFPRINTF (yyo, ")");
+  yy_symbol_value_print (yyoutput, yytype, yyvaluep);
+  YYFPRINTF (yyoutput, ")");
 }
 
 /*------------------------------------------------------------------.
@@ -1134,7 +1138,7 @@ do {                                                            \
 static void
 yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
 {
-  unsigned long yylno = yyrline[yyrule];
+  unsigned long int yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
   int yyi;
   YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
@@ -1145,7 +1149,7 @@ yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
       YYFPRINTF (stderr, "   $%d = ", yyi + 1);
       yy_symbol_print (stderr,
                        yystos[yyssp[yyi + 1 - yynrhs]],
-                       &yyvsp[(yyi + 1) - (yynrhs)]
+                       &(yyvsp[(yyi + 1) - (yynrhs)])
                                               );
       YYFPRINTF (stderr, "\n");
     }
@@ -1249,10 +1253,7 @@ yytnamerr (char *yyres, const char *yystr)
           case '\\':
             if (*++yyp != '\\')
               goto do_not_strip_quotes;
-            else
-              goto append;
-
-          append:
+            /* Fall through.  */
           default:
             if (yyres)
               yyres[yyn] = *yyp;
@@ -1270,7 +1271,7 @@ yytnamerr (char *yyres, const char *yystr)
   if (! yyres)
     return yystrlen (yystr);
 
-  return (YYSIZE_T) (yystpcpy (yyres, yystr) - yyres);
+  return yystpcpy (yyres, yystr) - yyres;
 }
 # endif
 
@@ -1348,10 +1349,10 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                 yyarg[yycount++] = yytname[yyx];
                 {
                   YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULLPTR, yytname[yyx]);
-                  if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
-                    yysize = yysize1;
-                  else
+                  if (! (yysize <= yysize1
+                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
                     return 2;
+                  yysize = yysize1;
                 }
               }
         }
@@ -1363,7 +1364,6 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
       case N:                               \
         yyformat = S;                       \
       break
-    default: /* Avoid compiler warnings. */
       YYCASE_(0, YY_("syntax error"));
       YYCASE_(1, YY_("syntax error, unexpected %s"));
       YYCASE_(2, YY_("syntax error, unexpected %s, expecting %s"));
@@ -1375,10 +1375,9 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 
   {
     YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
-    if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
-      yysize = yysize1;
-    else
+    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
       return 2;
+    yysize = yysize1;
   }
 
   if (*yymsg_alloc < yysize)
@@ -1508,31 +1507,23 @@ YYSTYPE yylval YY_INITIAL_VALUE (= yyval_default);
   yychar = YYEMPTY; /* Cause a token to be read.  */
   goto yysetstate;
 
-
 /*------------------------------------------------------------.
-| yynewstate -- push a new state, which is found in yystate.  |
+| yynewstate -- Push a new state, which is found in yystate.  |
 `------------------------------------------------------------*/
-yynewstate:
+ yynewstate:
   /* In all cases, when you get here, the value and location stacks
      have just been pushed.  So pushing a state here evens the stacks.  */
   yyssp++;
 
-
-/*--------------------------------------------------------------------.
-| yynewstate -- set current state (the top of the stack) to yystate.  |
-`--------------------------------------------------------------------*/
-yysetstate:
-  *yyssp = (yytype_int16) yystate;
+ yysetstate:
+  *yyssp = yystate;
 
   if (yyss + yystacksize - 1 <= yyssp)
-#if !defined yyoverflow && !defined YYSTACK_RELOCATE
-    goto yyexhaustedlab;
-#else
     {
       /* Get the current used size of the three stacks, in elements.  */
-      YYSIZE_T yysize = (YYSIZE_T) (yyssp - yyss + 1);
+      YYSIZE_T yysize = yyssp - yyss + 1;
 
-# if defined yyoverflow
+#ifdef yyoverflow
       {
         /* Give user a chance to reallocate the stack.  Use copies of
            these so that the &'s don't force the real ones into
@@ -1548,10 +1539,14 @@ yysetstate:
                     &yyss1, yysize * sizeof (*yyssp),
                     &yyvs1, yysize * sizeof (*yyvsp),
                     &yystacksize);
+
         yyss = yyss1;
         yyvs = yyvs1;
       }
-# else /* defined YYSTACK_RELOCATE */
+#else /* no yyoverflow */
+# ifndef YYSTACK_RELOCATE
+      goto yyexhaustedlab;
+# else
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
         goto yyexhaustedlab;
@@ -1567,22 +1562,22 @@ yysetstate:
           goto yyexhaustedlab;
         YYSTACK_RELOCATE (yyss_alloc, yyss);
         YYSTACK_RELOCATE (yyvs_alloc, yyvs);
-# undef YYSTACK_RELOCATE
+#  undef YYSTACK_RELOCATE
         if (yyss1 != yyssa)
           YYSTACK_FREE (yyss1);
       }
 # endif
+#endif /* no yyoverflow */
 
       yyssp = yyss + yysize - 1;
       yyvsp = yyvs + yysize - 1;
 
       YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-                  (unsigned long) yystacksize));
+                  (unsigned long int) yystacksize));
 
       if (yyss + yystacksize - 1 <= yyssp)
         YYABORT;
     }
-#endif /* !defined yyoverflow && !defined YYSTACK_RELOCATE */
 
   YYDPRINTF ((stderr, "Entering state %d\n", yystate));
 
@@ -1591,11 +1586,11 @@ yysetstate:
 
   goto yybackup;
 
-
 /*-----------.
 | yybackup.  |
 `-----------*/
 yybackup:
+
   /* Do appropriate processing given the current state.  Read a
      lookahead token if we need one and don't already have one.  */
 
@@ -1668,7 +1663,7 @@ yydefault:
 
 
 /*-----------------------------.
-| yyreduce -- do a reduction.  |
+| yyreduce -- Do a reduction.  |
 `-----------------------------*/
 yyreduce:
   /* yyn is the number of a rule to reduce with.  */
@@ -1689,202 +1684,202 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 178 "asm_mips.yac" /* yacc.c:1652  */
+#line 178 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__PLUS ; }
-#line 1695 "y.tab.c" /* yacc.c:1652  */
+#line 1690 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 180 "asm_mips.yac" /* yacc.c:1652  */
+#line 180 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__MINUS; }
-#line 1701 "y.tab.c" /* yacc.c:1652  */
+#line 1696 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 187 "asm_mips.yac" /* yacc.c:1652  */
+#line 187 "asm_mips.yac" /* yacc.c:1646  */
     { prog.add_line(new Label((yyvsp[-1].text))) ; }
-#line 1707 "y.tab.c" /* yacc.c:1652  */
+#line 1702 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 193 "asm_mips.yac" /* yacc.c:1652  */
+#line 193 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream lit ;
 		    lit << (yyvsp[0].uval);
 			prog.add_line(new Directive(".align",lit.str())) ;
 		}
-#line 1716 "y.tab.c" /* yacc.c:1652  */
+#line 1711 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 226 "asm_mips.yac" /* yacc.c:1652  */
+#line 226 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream bylist ;
 		    bylist << (yyvsp[-1].uval) << strmap[(yyvsp[0].uval)] ;
 			strmap[strmap_id] = bylist.str() ;
 			(yyval.uval) = (yyvsp[0].uval) ;
 		}
-#line 1726 "y.tab.c" /* yacc.c:1652  */
+#line 1721 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 235 "asm_mips.yac" /* yacc.c:1652  */
+#line 235 "asm_mips.yac" /* yacc.c:1646  */
     {	strmap_id++ ;
 			strmap[strmap_id] = "" ;
 			(yyval.uval) = strmap_id ;
 		}
-#line 1735 "y.tab.c" /* yacc.c:1652  */
+#line 1730 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 242 "asm_mips.yac" /* yacc.c:1652  */
+#line 242 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream bylist ;
 		    bylist << strmap[(yyvsp[-2].uval)] << "," << (yyvsp[0].uval);
 			strmap[strmap_id] = bylist.str() ;
 			(yyval.uval) = (yyvsp[-2].uval) ;
 		}
-#line 1745 "y.tab.c" /* yacc.c:1652  */
+#line 1740 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 255 "asm_mips.yac" /* yacc.c:1652  */
+#line 255 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = (yyvsp[0].uval); }
-#line 1751 "y.tab.c" /* yacc.c:1652  */
+#line 1746 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 260 "asm_mips.yac" /* yacc.c:1652  */
+#line 260 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = (yyvsp[0].uval) & 0x00003fff; }
-#line 1757 "y.tab.c" /* yacc.c:1652  */
+#line 1752 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 271 "asm_mips.yac" /* yacc.c:1652  */
+#line 271 "asm_mips.yac" /* yacc.c:1646  */
     {	prog.add_line(new Directive(".end",(yyvsp[0].text),false)) ; }
-#line 1763 "y.tab.c" /* yacc.c:1652  */
+#line 1758 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 277 "asm_mips.yac" /* yacc.c:1652  */
+#line 277 "asm_mips.yac" /* yacc.c:1646  */
     { prog.add_line(new Directive(".ent",(yyvsp[0].text),true)) ; }
-#line 1769 "y.tab.c" /* yacc.c:1652  */
+#line 1764 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 282 "asm_mips.yac" /* yacc.c:1652  */
+#line 282 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.text) = NULL; }
-#line 1775 "y.tab.c" /* yacc.c:1652  */
+#line 1770 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 284 "asm_mips.yac" /* yacc.c:1652  */
+#line 284 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.text) = (yyvsp[0].text)  ; }
-#line 1781 "y.tab.c" /* yacc.c:1652  */
+#line 1776 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 292 "asm_mips.yac" /* yacc.c:1652  */
+#line 292 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream lit ;
 		    lit << (yyvsp[-2].text) << ",	" << (yyvsp[0].uval) ;
 			prog.add_line(new Directive(".equ",lit.str())) ;
 		}
-#line 1790 "y.tab.c" /* yacc.c:1652  */
+#line 1785 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 300 "asm_mips.yac" /* yacc.c:1652  */
+#line 300 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = (yyvsp[0].uval); }
-#line 1796 "y.tab.c" /* yacc.c:1652  */
+#line 1791 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 304 "asm_mips.yac" /* yacc.c:1652  */
+#line 304 "asm_mips.yac" /* yacc.c:1646  */
     {
 		if   ((yyvsp[-1].uval) == ASM_OPR__PLUS)
 			{(yyval.uval) = (yyvsp[-2].uval) + (yyvsp[0].uval);}
 		else
 			{(yyval.uval) = (yyvsp[-2].uval) - (yyvsp[0].uval);}
 		}
-#line 1807 "y.tab.c" /* yacc.c:1652  */
+#line 1802 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 316 "asm_mips.yac" /* yacc.c:1652  */
+#line 316 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) =   (yyvsp[-1].uval); }
-#line 1813 "y.tab.c" /* yacc.c:1652  */
+#line 1808 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 321 "asm_mips.yac" /* yacc.c:1652  */
+#line 321 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ~ (yyvsp[-1].uval); }
-#line 1819 "y.tab.c" /* yacc.c:1652  */
+#line 1814 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 326 "asm_mips.yac" /* yacc.c:1652  */
+#line 326 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = - (yyvsp[-1].uval); }
-#line 1825 "y.tab.c" /* yacc.c:1652  */
+#line 1820 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 328 "asm_mips.yac" /* yacc.c:1652  */
+#line 328 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) =   (yyvsp[0].uval); }
-#line 1831 "y.tab.c" /* yacc.c:1652  */
+#line 1826 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 335 "asm_mips.yac" /* yacc.c:1652  */
+#line 335 "asm_mips.yac" /* yacc.c:1646  */
     {
 		if   ((yyvsp[-1].uval) == ASM_OPR__OR  ) (yyval.uval) = (yyvsp[-2].uval) | (yyvsp[0].uval);
 		if   ((yyvsp[-1].uval) == ASM_OPR__AND ) (yyval.uval) = (yyvsp[-2].uval) & (yyvsp[0].uval);
 		if   ((yyvsp[-1].uval) == ASM_OPR__XOR ) (yyval.uval) = (yyvsp[-2].uval) ^ (yyvsp[0].uval);
 		}
-#line 1841 "y.tab.c" /* yacc.c:1652  */
+#line 1836 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 343 "asm_mips.yac" /* yacc.c:1652  */
+#line 343 "asm_mips.yac" /* yacc.c:1646  */
     {
 		if   ((yyvsp[-1].uval) == ASM_OPR__OR  ) (yyval.uval) = (yyvsp[-2].uval) | (yyvsp[0].uval);
 		if   ((yyvsp[-1].uval) == ASM_OPR__AND ) (yyval.uval) = (yyvsp[-2].uval) & (yyvsp[0].uval);
 		if   ((yyvsp[-1].uval) == ASM_OPR__XOR ) (yyval.uval) = (yyvsp[-2].uval) ^ (yyvsp[0].uval);
 		}
-#line 1851 "y.tab.c" /* yacc.c:1652  */
+#line 1846 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 354 "asm_mips.yac" /* yacc.c:1652  */
+#line 354 "asm_mips.yac" /* yacc.c:1646  */
     {
 		if   ((yyvsp[-1].uval) == ASM_OPR__MUL ) (yyval.uval) = (yyvsp[-2].uval) * (yyvsp[0].uval);
 		else                       (yyval.uval) = (yyvsp[-2].uval) / (yyvsp[0].uval);
 		}
-#line 1860 "y.tab.c" /* yacc.c:1652  */
+#line 1855 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 361 "asm_mips.yac" /* yacc.c:1652  */
+#line 361 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = (yyvsp[-2].uval) * (yyvsp[0].uval); }
-#line 1866 "y.tab.c" /* yacc.c:1652  */
+#line 1861 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 368 "asm_mips.yac" /* yacc.c:1652  */
+#line 368 "asm_mips.yac" /* yacc.c:1646  */
     {
 		if   ((yyvsp[-1].uval) == ASM_OPR__SHL ) (yyval.uval) = (yyvsp[-2].uval) << (yyvsp[0].uval);
 		else                       (yyval.uval) = (yyvsp[-2].uval) >> (yyvsp[0].uval);
 		}
-#line 1875 "y.tab.c" /* yacc.c:1652  */
+#line 1870 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 377 "asm_mips.yac" /* yacc.c:1652  */
+#line 377 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream lab ;
 		    lab << (yyvsp[0].text);
 			prog.add_line(new Directive(".extern",lab.str())) ;
 		}
-#line 1884 "y.tab.c" /* yacc.c:1652  */
+#line 1879 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 391 "asm_mips.yac" /* yacc.c:1652  */
+#line 391 "asm_mips.yac" /* yacc.c:1646  */
     {	t_Operator op ;
 			string m = strmap[(yyvsp[-5].uval)] ;
 			
@@ -1894,11 +1889,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPImmediate((yyvsp[-5].uval)),new OPImmediate((yyvsp[-3].uval)),new OPRegister((yyvsp[-1].uval),Src))) ;	
 		}
-#line 1898 "y.tab.c" /* yacc.c:1652  */
+#line 1893 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 405 "asm_mips.yac" /* yacc.c:1652  */
+#line 405 "asm_mips.yac" /* yacc.c:1646  */
     {	t_Operator op ;
 			string m = strmap[(yyvsp[0].uval)] ;
 			
@@ -1909,11 +1904,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPLabel(m))) ;	
 		}
-#line 1913 "y.tab.c" /* yacc.c:1652  */
+#line 1908 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 418 "asm_mips.yac" /* yacc.c:1652  */
+#line 418 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-1].uval)) {
@@ -1923,11 +1918,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 1927 "y.tab.c" /* yacc.c:1652  */
+#line 1922 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 431 "asm_mips.yac" /* yacc.c:1652  */
+#line 431 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[0].uval)) {
@@ -1940,11 +1935,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op)) ;
 		}
-#line 1944 "y.tab.c" /* yacc.c:1652  */
+#line 1939 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 448 "asm_mips.yac" /* yacc.c:1652  */
+#line 448 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-1].uval)) {
@@ -1953,11 +1948,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 1957 "y.tab.c" /* yacc.c:1652  */
+#line 1952 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 460 "asm_mips.yac" /* yacc.c:1652  */
+#line 460 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -1966,11 +1961,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Dst),new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 1970 "y.tab.c" /* yacc.c:1652  */
+#line 1965 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 473 "asm_mips.yac" /* yacc.c:1652  */
+#line 473 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-1].uval)) {
@@ -1980,11 +1975,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[0].uval),Dst))) ;
 		}
-#line 1984 "y.tab.c" /* yacc.c:1652  */
+#line 1979 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 492 "asm_mips.yac" /* yacc.c:1652  */
+#line 492 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-6].uval)) {
@@ -2000,11 +1995,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-5].uval),Dst),new OPImmediate((yyvsp[-3].uval)),new OPRegister((yyvsp[-1].uval),Src))) ;
 		}
-#line 2004 "y.tab.c" /* yacc.c:1652  */
+#line 1999 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 514 "asm_mips.yac" /* yacc.c:1652  */
+#line 514 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-6].uval)) {
@@ -2020,11 +2015,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-5].uval),Dst),new OPExpression((yyvsp[-3].text)),new OPRegister((yyvsp[-1].uval),Src))) ;
 		}
-#line 2024 "y.tab.c" /* yacc.c:1652  */
+#line 2019 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 535 "asm_mips.yac" /* yacc.c:1652  */
+#line 535 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2040,11 +2035,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-1].uval),Src))) ;
 		}
-#line 2044 "y.tab.c" /* yacc.c:1652  */
+#line 2039 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 554 "asm_mips.yac" /* yacc.c:1652  */
+#line 554 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -2060,11 +2055,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Dst),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2064 "y.tab.c" /* yacc.c:1652  */
+#line 2059 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 576 "asm_mips.yac" /* yacc.c:1652  */
+#line 576 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -2073,11 +2068,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Dst),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2077 "y.tab.c" /* yacc.c:1652  */
+#line 2072 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 588 "asm_mips.yac" /* yacc.c:1652  */
+#line 588 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -2086,11 +2081,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Dst),new OPExpression((yyvsp[0].text)))) ;
 		}
-#line 2090 "y.tab.c" /* yacc.c:1652  */
+#line 2085 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 603 "asm_mips.yac" /* yacc.c:1652  */
+#line 603 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -2100,11 +2095,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Dst),new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 2104 "y.tab.c" /* yacc.c:1652  */
+#line 2099 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 621 "asm_mips.yac" /* yacc.c:1652  */
+#line 621 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2125,11 +2120,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 2129 "y.tab.c" /* yacc.c:1652  */
+#line 2124 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 650 "asm_mips.yac" /* yacc.c:1652  */
+#line 650 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2141,11 +2136,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2145 "y.tab.c" /* yacc.c:1652  */
+#line 2140 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 667 "asm_mips.yac" /* yacc.c:1652  */
+#line 667 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2157,11 +2152,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPExpression((yyvsp[0].text)))) ;
 		}
-#line 2161 "y.tab.c" /* yacc.c:1652  */
+#line 2156 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 684 "asm_mips.yac" /* yacc.c:1652  */
+#line 684 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2170,11 +2165,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2174 "y.tab.c" /* yacc.c:1652  */
+#line 2169 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 701 "asm_mips.yac" /* yacc.c:1652  */
+#line 701 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2185,11 +2180,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2189 "y.tab.c" /* yacc.c:1652  */
+#line 2184 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 720 "asm_mips.yac" /* yacc.c:1652  */
+#line 720 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2200,11 +2195,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 2204 "y.tab.c" /* yacc.c:1652  */
+#line 2199 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 739 "asm_mips.yac" /* yacc.c:1652  */
+#line 739 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2215,11 +2210,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2219 "y.tab.c" /* yacc.c:1652  */
+#line 2214 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 754 "asm_mips.yac" /* yacc.c:1652  */
+#line 754 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-1].uval)) {
@@ -2230,11 +2225,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 2234 "y.tab.c" /* yacc.c:1652  */
+#line 2229 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 771 "asm_mips.yac" /* yacc.c:1652  */
+#line 771 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			string m = strmap[(yyvsp[0].uval)] ;
@@ -2249,11 +2244,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Src),new OPLabel(m))) ;
 		}
-#line 2253 "y.tab.c" /* yacc.c:1652  */
+#line 2248 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 793 "asm_mips.yac" /* yacc.c:1652  */
+#line 793 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -2275,11 +2270,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Src),new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 2279 "y.tab.c" /* yacc.c:1652  */
+#line 2274 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 820 "asm_mips.yac" /* yacc.c:1652  */
+#line 820 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			if ((yyvsp[-4].uval) != 0 ) {
@@ -2304,11 +2299,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Dst),new OPRegister((yyvsp[-2].uval),Src),new OPRegister((yyvsp[0].uval),Src))) ;
 		}
-#line 2308 "y.tab.c" /* yacc.c:1652  */
+#line 2303 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 853 "asm_mips.yac" /* yacc.c:1652  */
+#line 853 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			string m = strmap[(yyvsp[0].uval)] ;
@@ -2319,11 +2314,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Src),new OPRegister((yyvsp[-2].uval),Src),new OPLabel(m))) ;
 		}
-#line 2323 "y.tab.c" /* yacc.c:1652  */
+#line 2318 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 869 "asm_mips.yac" /* yacc.c:1652  */
+#line 869 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			std::ostringstream lit ;
@@ -2335,11 +2330,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Src),new OPRegister((yyvsp[-2].uval),Src),new OPLabel(lit.str()))) ;
 		}
-#line 2339 "y.tab.c" /* yacc.c:1652  */
+#line 2334 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 887 "asm_mips.yac" /* yacc.c:1652  */
+#line 887 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -2353,11 +2348,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Src),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2357 "y.tab.c" /* yacc.c:1652  */
+#line 2352 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 907 "asm_mips.yac" /* yacc.c:1652  */
+#line 907 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			t_Src_Dst spin, spinc0 ;
@@ -2368,11 +2363,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),spin),new OPRegister((yyvsp[0].uval),spinc0))) ;
 		}
-#line 2372 "y.tab.c" /* yacc.c:1652  */
+#line 2367 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 924 "asm_mips.yac" /* yacc.c:1652  */
+#line 924 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			t_Src_Dst spin, spinc0 ;
@@ -2383,11 +2378,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),spin),new OPRegister((yyvsp[0].uval),spinc0))) ;
 		}
-#line 2387 "y.tab.c" /* yacc.c:1652  */
+#line 2382 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 944 "asm_mips.yac" /* yacc.c:1652  */
+#line 944 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-6].uval)) {
@@ -2399,11 +2394,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-5].uval),Src),new OPImmediate((yyvsp[-3].uval)),new OPRegister((yyvsp[-1].uval),Src))) ;
 		}
-#line 2403 "y.tab.c" /* yacc.c:1652  */
+#line 2398 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 961 "asm_mips.yac" /* yacc.c:1652  */
+#line 961 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-5].uval)) {
@@ -2415,11 +2410,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-4].uval),Src),new OPRegister((yyvsp[-1].uval),Src))) ;
 		}
-#line 2419 "y.tab.c" /* yacc.c:1652  */
+#line 2414 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 976 "asm_mips.yac" /* yacc.c:1652  */
+#line 976 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-3].uval)) {
@@ -2431,11 +2426,11 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPRegister((yyvsp[-2].uval),Src),new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2435 "y.tab.c" /* yacc.c:1652  */
+#line 2430 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 992 "asm_mips.yac" /* yacc.c:1652  */
+#line 992 "asm_mips.yac" /* yacc.c:1646  */
     {
 			t_Operator op ;
 			switch((yyvsp[-1].uval)) {
@@ -2444,103 +2439,103 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(op,new OPImmediate((yyvsp[0].uval)))) ;
 		}
-#line 2448 "y.tab.c" /* yacc.c:1652  */
+#line 2443 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 1005 "asm_mips.yac" /* yacc.c:1652  */
+#line 1005 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream lab ;
 		    lab << (yyvsp[0].text);
 			prog.add_line(new Directive(".global",lab.str())) ;
 		}
-#line 2457 "y.tab.c" /* yacc.c:1652  */
+#line 2452 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 74:
-#line 1013 "asm_mips.yac" /* yacc.c:1652  */
+#line 1013 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = (yyvsp[0].uval) & 0x0000ffff; }
-#line 2463 "y.tab.c" /* yacc.c:1652  */
+#line 2458 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 75:
-#line 1018 "asm_mips.yac" /* yacc.c:1652  */
+#line 1018 "asm_mips.yac" /* yacc.c:1646  */
     {  (yyval.uval) = (yyvsp[0].uval); }
-#line 2469 "y.tab.c" /* yacc.c:1652  */
+#line 2464 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 76:
-#line 1020 "asm_mips.yac" /* yacc.c:1652  */
+#line 1020 "asm_mips.yac" /* yacc.c:1646  */
     {  (yyval.uval) = (yyvsp[0].uval); }
-#line 2475 "y.tab.c" /* yacc.c:1652  */
+#line 2470 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 77:
-#line 1022 "asm_mips.yac" /* yacc.c:1652  */
+#line 1022 "asm_mips.yac" /* yacc.c:1646  */
     {  (yyval.uval) = (yyvsp[0].uval); }
-#line 2481 "y.tab.c" /* yacc.c:1652  */
+#line 2476 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 78:
-#line 1024 "asm_mips.yac" /* yacc.c:1652  */
+#line 1024 "asm_mips.yac" /* yacc.c:1646  */
     {  (yyval.uval) = (yyvsp[0].uval); }
-#line 2487 "y.tab.c" /* yacc.c:1652  */
+#line 2482 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 79:
-#line 1029 "asm_mips.yac" /* yacc.c:1652  */
+#line 1029 "asm_mips.yac" /* yacc.c:1646  */
     {  (yyval.uval) = (yyvsp[0].uval); }
-#line 2493 "y.tab.c" /* yacc.c:1652  */
+#line 2488 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 80:
-#line 1031 "asm_mips.yac" /* yacc.c:1652  */
+#line 1031 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = (yyvsp[0].uval) & 0x0000001f; }
-#line 2499 "y.tab.c" /* yacc.c:1652  */
+#line 2494 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 81:
-#line 1036 "asm_mips.yac" /* yacc.c:1652  */
+#line 1036 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.text) = (yyvsp[0].text); }
-#line 2505 "y.tab.c" /* yacc.c:1652  */
+#line 2500 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 1038 "asm_mips.yac" /* yacc.c:1652  */
+#line 1038 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << (yyvsp[0].uval);
 			(yyval.text) = const_cast<char*>(str.str().c_str()) ;
 		}
-#line 2514 "y.tab.c" /* yacc.c:1652  */
+#line 2509 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 83:
-#line 1043 "asm_mips.yac" /* yacc.c:1652  */
+#line 1043 "asm_mips.yac" /* yacc.c:1646  */
     { 
 		std::cout << "Label String2 " << (yyvsp[0].text) << std::endl ;
 		(yyval.text) = (yyvsp[0].text); }
-#line 2522 "y.tab.c" /* yacc.c:1652  */
+#line 2517 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 85:
-#line 1054 "asm_mips.yac" /* yacc.c:1652  */
+#line 1054 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__OR   ; }
-#line 2528 "y.tab.c" /* yacc.c:1652  */
+#line 2523 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 86:
-#line 1056 "asm_mips.yac" /* yacc.c:1652  */
+#line 1056 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__AND  ; }
-#line 2534 "y.tab.c" /* yacc.c:1652  */
+#line 2529 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 87:
-#line 1058 "asm_mips.yac" /* yacc.c:1652  */
+#line 1058 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__XOR  ; }
-#line 2540 "y.tab.c" /* yacc.c:1652  */
+#line 2535 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 95:
-#line 1074 "asm_mips.yac" /* yacc.c:1652  */
+#line 1074 "asm_mips.yac" /* yacc.c:1646  */
     {
 			string m = strmap[(yyvsp[0].uval)] ;
 	  		if ((yyvsp[-1].uval) != ASM_MPS__B) {
@@ -2548,22 +2543,22 @@ yyreduce:
 			}
 			prog.add_line(new Instruction(t_Operator::bgez,new OPRegister(0,Src),new OPLabel(m))) ;
 		}
-#line 2552 "y.tab.c" /* yacc.c:1652  */
+#line 2547 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 96:
-#line 1085 "asm_mips.yac" /* yacc.c:1652  */
+#line 1085 "asm_mips.yac" /* yacc.c:1646  */
     {
 	  		if ((yyvsp[0].uval) != ASM_MPS__NOP) {
 				std::cerr<< "asm_mips.yac : " << (yyvsp[0].uval) << "is not an valid Macro_n" << std::endl ;
 			}
 			prog.add_line(new Instruction(t_Operator::add,new OPRegister(0,Dst),new OPRegister(0,Src),new OPRegister(0,Src))) ;
 		}
-#line 2563 "y.tab.c" /* yacc.c:1652  */
+#line 2558 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 97:
-#line 1098 "asm_mips.yac" /* yacc.c:1652  */
+#line 1098 "asm_mips.yac" /* yacc.c:1646  */
     {
 	  		if ((yyvsp[-3].uval) != ASM_MPS__LI) {
 				std::cerr<< "asm_mips.yac : " << (yyvsp[-3].uval) << "is not an valid Macro_rd_i32" << std::endl ;
@@ -2577,11 +2572,11 @@ yyreduce:
 			prog.add_line(new Instruction(t_Operator::ori,new OPRegister((yyvsp[-2].uval),Dst),new OPRegister(1,Src),new OPImmediate(lo))) ;
 			prog.add_line(new Directive(".set","at")) ; 
 		}
-#line 2581 "y.tab.c" /* yacc.c:1652  */
+#line 2576 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 98:
-#line 1118 "asm_mips.yac" /* yacc.c:1652  */
+#line 1118 "asm_mips.yac" /* yacc.c:1646  */
     {
 			string m = strmap[(yyvsp[0].uval)] ;
 		    std::ostringstream oss_hi ;
@@ -2598,11 +2593,11 @@ yyreduce:
 			prog.add_line(new Instruction(t_Operator::ori,new OPRegister((yyvsp[-2].uval),Dst),new OPRegister(1,Src),new OPExpression(oss_lo.str()))) ;
 			prog.add_line(new Directive(".set","at")) ; 
 		}
-#line 2602 "y.tab.c" /* yacc.c:1652  */
+#line 2597 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 99:
-#line 1141 "asm_mips.yac" /* yacc.c:1652  */
+#line 1141 "asm_mips.yac" /* yacc.c:1646  */
     {
 	  		if ((yyvsp[-3].uval) != ASM_MPS__MOVE) {
 				std::cerr<< "asm_mips.yac : " << (yyvsp[-3].uval) << "is not an valid Macro_rd_rs" << std::endl ;
@@ -2610,11 +2605,11 @@ yyreduce:
 						
 			prog.add_line(new Instruction(t_Operator::or_,new OPRegister((yyvsp[-2].uval),Dst),new OPRegister((yyvsp[0].uval),Src),new OPRegister(0,Src))) ;
 		}
-#line 2614 "y.tab.c" /* yacc.c:1652  */
+#line 2609 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 100:
-#line 1155 "asm_mips.yac" /* yacc.c:1652  */
+#line 1155 "asm_mips.yac" /* yacc.c:1646  */
     {
 	  		if ((yyvsp[-3].uval) == ASM_MPS__NEG) {
 				prog.add_line(new Instruction(t_Operator::sub,new OPRegister((yyvsp[-2].uval),Dst),new OPRegister(0,Src),new OPRegister((yyvsp[0].uval),Src))) ;
@@ -2624,11 +2619,11 @@ yyreduce:
 				std::cerr<< "asm_mips.yac : " << (yyvsp[-3].uval) << "is not an valid Macro_rd_rt" << std::endl ; break ;
 			}
 		}
-#line 2628 "y.tab.c" /* yacc.c:1652  */
+#line 2623 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 101:
-#line 1171 "asm_mips.yac" /* yacc.c:1652  */
+#line 1171 "asm_mips.yac" /* yacc.c:1646  */
     {
 			string m = strmap[(yyvsp[0].uval)] ;
 	  		if ((yyvsp[-3].uval) == ASM_MPS__BEQZ) {
@@ -2639,293 +2634,293 @@ yyreduce:
 				std::cerr<< "asm_mips.yac : " << (yyvsp[-3].uval) << "is not an valid Macro_rs_label" << std::endl ; break ;
 			}
 		}
-#line 2643 "y.tab.c" /* yacc.c:1652  */
+#line 2638 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 110:
-#line 1197 "asm_mips.yac" /* yacc.c:1652  */
+#line 1197 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << (yyvsp[0].text) ;
 			prog.add_line(new Directive(".ascii",str.str())) ;
 		}
-#line 2652 "y.tab.c" /* yacc.c:1652  */
+#line 2647 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 111:
-#line 1206 "asm_mips.yac" /* yacc.c:1652  */
+#line 1206 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << (yyvsp[0].text) ;
 			prog.add_line(new Directive(".asciiz",str.str())) ;
 		}
-#line 2661 "y.tab.c" /* yacc.c:1652  */
+#line 2656 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 112:
-#line 1215 "asm_mips.yac" /* yacc.c:1652  */
+#line 1215 "asm_mips.yac" /* yacc.c:1646  */
     {prog.add_line(new Directive(".byte",strmap[(yyvsp[0].uval)])) ;}
-#line 2667 "y.tab.c" /* yacc.c:1652  */
+#line 2662 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 113:
-#line 1223 "asm_mips.yac" /* yacc.c:1652  */
+#line 1223 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << (yyvsp[-2].text) << "," << (yyvsp[0].uval) ;
 			prog.add_line(new Directive(".lcomm",str.str())) ;
 		}
-#line 2676 "y.tab.c" /* yacc.c:1652  */
+#line 2671 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 114:
-#line 1236 "asm_mips.yac" /* yacc.c:1652  */
+#line 1236 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << (yyvsp[-4].text) << "," << (yyvsp[-2].uval) << "," << (yyvsp[0].uval);
 			prog.add_line(new Directive(".comm",str.str())) ;
 		}
-#line 2685 "y.tab.c" /* yacc.c:1652  */
+#line 2680 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 115:
-#line 1245 "asm_mips.yac" /* yacc.c:1652  */
+#line 1245 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << (yyvsp[0].uval) ;
 			prog.add_line(new Directive(".space",str.str())) ;
 		}
-#line 2694 "y.tab.c" /* yacc.c:1652  */
+#line 2689 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 116:
-#line 1254 "asm_mips.yac" /* yacc.c:1652  */
+#line 1254 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << (yyvsp[0].uval) ;
 			prog.add_line(new Directive(".skip",str.str())) ;
 		}
-#line 2703 "y.tab.c" /* yacc.c:1652  */
+#line 2698 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 117:
-#line 1263 "asm_mips.yac" /* yacc.c:1652  */
+#line 1263 "asm_mips.yac" /* yacc.c:1646  */
     {prog.add_line(new Directive(".word",strmap[(yyvsp[0].uval)])) ;}
-#line 2709 "y.tab.c" /* yacc.c:1652  */
+#line 2704 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 140:
-#line 1293 "asm_mips.yac" /* yacc.c:1652  */
+#line 1293 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__MUL  ; }
-#line 2715 "y.tab.c" /* yacc.c:1652  */
+#line 2710 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 141:
-#line 1295 "asm_mips.yac" /* yacc.c:1652  */
+#line 1295 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__DIV  ; }
-#line 2721 "y.tab.c" /* yacc.c:1652  */
+#line 2716 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 142:
-#line 1300 "asm_mips.yac" /* yacc.c:1652  */
+#line 1300 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = (yyvsp[0].uval); }
-#line 2727 "y.tab.c" /* yacc.c:1652  */
+#line 2722 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 143:
-#line 1302 "asm_mips.yac" /* yacc.c:1652  */
+#line 1302 "asm_mips.yac" /* yacc.c:1646  */
     {	
 			strmap_id++ ;
 			strmap[strmap_id] = (yyvsp[0].text) ;
 			(yyval.uval) = strmap_id ;
 		}
-#line 2737 "y.tab.c" /* yacc.c:1652  */
+#line 2732 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 144:
-#line 1312 "asm_mips.yac" /* yacc.c:1652  */
+#line 1312 "asm_mips.yac" /* yacc.c:1646  */
     { 	
 			prog.add_line(new Directive(".section",(yyvsp[0].text))) ;
 		}
-#line 2745 "y.tab.c" /* yacc.c:1652  */
+#line 2740 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 145:
-#line 1316 "asm_mips.yac" /* yacc.c:1652  */
+#line 1316 "asm_mips.yac" /* yacc.c:1646  */
     {
 			prog.add_line(new Directive((yyvsp[0].text))) ;
 		}
-#line 2753 "y.tab.c" /* yacc.c:1652  */
+#line 2748 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 146:
-#line 1324 "asm_mips.yac" /* yacc.c:1652  */
+#line 1324 "asm_mips.yac" /* yacc.c:1646  */
     {	prog.add_line(new Directive(".set","reorder")) ; }
-#line 2759 "y.tab.c" /* yacc.c:1652  */
+#line 2754 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 147:
-#line 1327 "asm_mips.yac" /* yacc.c:1652  */
+#line 1327 "asm_mips.yac" /* yacc.c:1646  */
     {	prog.add_line(new Directive(".set","noreorder")) ; }
-#line 2765 "y.tab.c" /* yacc.c:1652  */
+#line 2760 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 148:
-#line 1330 "asm_mips.yac" /* yacc.c:1652  */
+#line 1330 "asm_mips.yac" /* yacc.c:1646  */
     {	string m = strmap[(yyvsp[0].uval)] ;
 			prog.add_line(new Directive(".set",m)) ; }
-#line 2772 "y.tab.c" /* yacc.c:1652  */
+#line 2767 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 149:
-#line 1338 "asm_mips.yac" /* yacc.c:1652  */
+#line 1338 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream dir ;
 		    dir << (yyvsp[-1].text) ;
 			prog.add_line(new Directive(dir.str(),strmap[strmap_id])) ;
 		}
-#line 2781 "y.tab.c" /* yacc.c:1652  */
+#line 2776 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 150:
-#line 1346 "asm_mips.yac" /* yacc.c:1652  */
+#line 1346 "asm_mips.yac" /* yacc.c:1646  */
     {	strmap_id++ ;
 			strmap[strmap_id] = "" ;
 			(yyval.uval) = strmap_id ;
 		}
-#line 2790 "y.tab.c" /* yacc.c:1652  */
+#line 2785 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 151:
-#line 1352 "asm_mips.yac" /* yacc.c:1652  */
+#line 1352 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << strmap[(yyvsp[-1].uval)] << " " << (yyvsp[0].text);
 			strmap[strmap_id] = str.str() ;
 			(yyval.uval) = (yyvsp[-1].uval) ;
 		}
-#line 2800 "y.tab.c" /* yacc.c:1652  */
+#line 2795 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 152:
-#line 1359 "asm_mips.yac" /* yacc.c:1652  */
+#line 1359 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << strmap[(yyvsp[-1].uval)] << "," ;
 			strmap[strmap_id] = str.str() ;
 			(yyval.uval) = (yyvsp[-1].uval) ;
 		}
-#line 2810 "y.tab.c" /* yacc.c:1652  */
+#line 2805 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 153:
-#line 1366 "asm_mips.yac" /* yacc.c:1652  */
+#line 1366 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << strmap[(yyvsp[-1].uval)] << "@";
 			strmap[strmap_id] = str.str() ;
 			(yyval.uval) = (yyvsp[-1].uval) ;
 		}
-#line 2820 "y.tab.c" /* yacc.c:1652  */
+#line 2815 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 154:
-#line 1373 "asm_mips.yac" /* yacc.c:1652  */
+#line 1373 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << strmap[(yyvsp[-1].uval)] << "$" << (yyvsp[0].uval) ;
 			strmap[strmap_id] = str.str() ;
 			(yyval.uval) = (yyvsp[-1].uval) ;
 		}
-#line 2830 "y.tab.c" /* yacc.c:1652  */
+#line 2825 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 155:
-#line 1380 "asm_mips.yac" /* yacc.c:1652  */
+#line 1380 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << strmap[(yyvsp[-1].uval)] << (yyvsp[0].text);
 			strmap[strmap_id] = str.str() ;
 			(yyval.uval) = (yyvsp[-1].uval) ;
 		}
-#line 2840 "y.tab.c" /* yacc.c:1652  */
+#line 2835 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 156:
-#line 1387 "asm_mips.yac" /* yacc.c:1652  */
+#line 1387 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << strmap[(yyvsp[-1].uval)] << (yyvsp[0].uval);
 			strmap[strmap_id] = str.str() ;
 			(yyval.uval) = (yyvsp[-1].uval) ;
 		}
-#line 2850 "y.tab.c" /* yacc.c:1652  */
+#line 2845 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 157:
-#line 1394 "asm_mips.yac" /* yacc.c:1652  */
+#line 1394 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream str ;
 		    str << strmap[(yyvsp[-1].uval)] << "-";
 			strmap[strmap_id] = str.str() ;
 			(yyval.uval) = (yyvsp[-1].uval) ;
 		}
-#line 2860 "y.tab.c" /* yacc.c:1652  */
+#line 2855 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 158:
-#line 1402 "asm_mips.yac" /* yacc.c:1652  */
+#line 1402 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__SHL  ; }
-#line 2866 "y.tab.c" /* yacc.c:1652  */
+#line 2861 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 159:
-#line 1404 "asm_mips.yac" /* yacc.c:1652  */
+#line 1404 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ASM_OPR__SHR  ; }
-#line 2872 "y.tab.c" /* yacc.c:1652  */
+#line 2867 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 160:
-#line 1409 "asm_mips.yac" /* yacc.c:1652  */
+#line 1409 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) =   (yyvsp[0].uval); }
-#line 2878 "y.tab.c" /* yacc.c:1652  */
+#line 2873 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 161:
-#line 1412 "asm_mips.yac" /* yacc.c:1652  */
+#line 1412 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = - (yyvsp[0].uval); }
-#line 2884 "y.tab.c" /* yacc.c:1652  */
+#line 2879 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 162:
-#line 1415 "asm_mips.yac" /* yacc.c:1652  */
+#line 1415 "asm_mips.yac" /* yacc.c:1646  */
     { (yyval.uval) = ~ (yyvsp[0].uval); }
-#line 2890 "y.tab.c" /* yacc.c:1652  */
+#line 2885 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 175:
-#line 1439 "asm_mips.yac" /* yacc.c:1652  */
+#line 1439 "asm_mips.yac" /* yacc.c:1646  */
     {	(yyval.uval) = (yyvsp[0].uval) & 0x0000ffff; }
-#line 2896 "y.tab.c" /* yacc.c:1652  */
+#line 2891 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 176:
-#line 1445 "asm_mips.yac" /* yacc.c:1652  */
+#line 1445 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream bylist ;
 		    bylist << (yyvsp[-1].uval) << strmap[(yyvsp[0].uval)] ;
 			strmap[strmap_id] = bylist.str() ;
 			(yyval.uval) = (yyvsp[0].uval) ;
 		}
-#line 2906 "y.tab.c" /* yacc.c:1652  */
+#line 2901 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 177:
-#line 1454 "asm_mips.yac" /* yacc.c:1652  */
+#line 1454 "asm_mips.yac" /* yacc.c:1646  */
     {	strmap_id++ ;
 			strmap[strmap_id] = "" ;
 			(yyval.uval) = strmap_id ;
 		}
-#line 2915 "y.tab.c" /* yacc.c:1652  */
+#line 2910 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 178:
-#line 1461 "asm_mips.yac" /* yacc.c:1652  */
+#line 1461 "asm_mips.yac" /* yacc.c:1646  */
     {	std::ostringstream bylist ;
 		    bylist << strmap[(yyvsp[-2].uval)] << "," << (yyvsp[0].uval);
 			strmap[strmap_id] = bylist.str() ;
 			(yyval.uval) = (yyvsp[-2].uval) ;
 		}
-#line 2925 "y.tab.c" /* yacc.c:1652  */
+#line 2920 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 2929 "y.tab.c" /* yacc.c:1652  */
+#line 2924 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2950,13 +2945,14 @@ yyreduce:
   /* Now 'shift' the result of the reduction.  Determine what state
      that goes to, based on the state we popped back to and the rule
      number reduced by.  */
-  {
-    const int yylhs = yyr1[yyn] - YYNTOKENS;
-    const int yyi = yypgoto[yylhs] + *yyssp;
-    yystate = (0 <= yyi && yyi <= YYLAST && yycheck[yyi] == *yyssp
-               ? yytable[yyi]
-               : yydefgoto[yylhs]);
-  }
+
+  yyn = yyr1[yyn];
+
+  yystate = yypgoto[yyn - YYNTOKENS] + *yyssp;
+  if (0 <= yystate && yystate <= YYLAST && yycheck[yystate] == *yyssp)
+    yystate = yytable[yystate];
+  else
+    yystate = yydefgoto[yyn - YYNTOKENS];
 
   goto yynewstate;
 
@@ -3039,10 +3035,12 @@ yyerrlab:
 | yyerrorlab -- error raised explicitly by YYERROR.  |
 `---------------------------------------------------*/
 yyerrorlab:
-  /* Pacify compilers when the user code never invokes YYERROR and the
-     label yyerrorlab therefore never appears in user code.  */
-  if (0)
-    YYERROR;
+
+  /* Pacify compilers like GCC when the user code never invokes
+     YYERROR and the label yyerrorlab therefore never appears in user
+     code.  */
+  if (/*CONSTCOND*/ 0)
+     goto yyerrorlab;
 
   /* Do not reclaim the symbols of the rule whose action triggered
      this YYERROR.  */
@@ -3104,14 +3102,12 @@ yyacceptlab:
   yyresult = 0;
   goto yyreturn;
 
-
 /*-----------------------------------.
 | yyabortlab -- YYABORT comes here.  |
 `-----------------------------------*/
 yyabortlab:
   yyresult = 1;
   goto yyreturn;
-
 
 #if !defined yyoverflow || YYERROR_VERBOSE
 /*-------------------------------------------------.
@@ -3123,10 +3119,6 @@ yyexhaustedlab:
   /* Fall through.  */
 #endif
 
-
-/*-----------------------------------------------------.
-| yyreturn -- parsing is finished, return the result.  |
-`-----------------------------------------------------*/
 yyreturn:
   if (yychar != YYEMPTY)
     {
@@ -3156,5 +3148,5 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 1468 "asm_mips.yac" /* yacc.c:1918  */
+#line 1468 "asm_mips.yac" /* yacc.c:1906  */
 

@@ -435,6 +435,7 @@ void Function::compute_live_var(){
 
   int size= (int) _myBB.size();
   bb_it=_myBB.begin();
+  vector<bool> presence(size, 0);
 
   for (int i = 0; i < size; i++) {
     if ((*bb_it)->get_nb_succ() == 0)
@@ -445,12 +446,15 @@ void Function::compute_live_var(){
 	 // récupérer la première référence de l'entête de note workinglist
      bb_curr = workinglist.front();
      workinglist.pop_front();
+     presence[bb_curr->get_index()] = 1;
+
 
      // LiveOut (pas sur :/ à revoir !)
 	 if (bb_curr->get_nb_succ() != 0) {
-	   for (int i = 0; i < bb_curr->get_nb_succ(); i++) {
-		   bb_curr->LiveOut[i] = bb_curr->LiveOut[i] || bb_curr->LiveIn[i];
-	   }
+	   for (int i = 0; i < NB_REG; i++)
+		   for(int j = 0; j<bb_curr->get_nb_succ(); j++)
+			   bb_curr->LiveOut[i] = bb_curr->LiveOut[i] || bb_curr->LiveIn[i];
+
 	 } else {
 	   if (bb_curr->get_branch())
 		 bb_curr->LiveOut[2] = 1;
@@ -462,15 +466,12 @@ void Function::compute_live_var(){
 
 
 	 // working list
-	 /*
 	 for (int i = 0; i < bb_curr->get_nb_pred(); i++) {
 	   bb_pred = bb_curr->get_predecessor(i);
-
-	 }*/
+	   if (! presence[bb_pred->get_index()])
+	          workinglist.push_back(bb_pred);
+	 }
   }
-
-
- 
 
  // fin � REMPLIR
 }
