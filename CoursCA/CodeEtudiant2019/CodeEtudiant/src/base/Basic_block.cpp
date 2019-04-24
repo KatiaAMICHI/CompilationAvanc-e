@@ -553,7 +553,10 @@ void Basic_block::compute_def_liveout(){
 
 
   /* A REMPLIR */
-
+	for (Instruction * inst = get_first_instruction(); inst ; inst = inst->get_next())
+	    if (OPRegister *dest = inst->get_reg_dst())
+	      if (LiveOut[dest->get_reg_num()])
+	        DefLiveOut[dest->get_reg_num()] = inst->get_index();
 
 
 
@@ -570,6 +573,7 @@ void Basic_block::show_def_liveout(){
       cout << "$"<< i << " definit par l'instruction i" << DefLiveOut[i] << endl;
   }
   cout << endl;
+
   return;
 }
 
