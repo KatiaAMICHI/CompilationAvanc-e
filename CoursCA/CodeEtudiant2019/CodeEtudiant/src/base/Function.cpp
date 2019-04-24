@@ -479,7 +479,6 @@ void Function::compute_live_var() {
 	}
 
 
-
 // fin � REMPLIR
 }
 void Function::show_live_var(void) {
