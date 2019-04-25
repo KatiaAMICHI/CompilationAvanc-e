@@ -549,8 +549,7 @@ void Basic_block::show_use_def(void) {
  *****/
 void Basic_block::compute_def_liveout() {
 	/* A REMPLIR */
-	for (Instruction * inst = get_first_instruction(); inst;
-			inst = inst->get_next())
+	for (Instruction * inst = get_first_instruction(); inst; inst = inst->get_next())
 		if (OPRegister *dest = inst->get_reg_dst())
 			if (LiveOut[dest->get_reg_num()])
 				DefLiveOut[dest->get_reg_num()] = inst->get_index();
@@ -580,32 +579,29 @@ void Basic_block::reg_rename(list<int> *frees) {
 
 	/* A REMPLIR */
 
-	int newr;
-	compute_def_liveout();
+	vector<int> regs(64, -1);
+	int new_reg;
 
-	vector<int> corres(64, -1);
-
-	for (Instruction * inst = get_first_instruction(); inst;
-			inst = inst->get_next()) {
+	for (Instruction * inst = get_first_instruction(); inst; inst = inst->get_next()) {
 		if (OPRegister *src1 = inst->get_reg_src1())
-			if (corres[src1->get_reg_num()] != -1) {
-				src1->set_reg_num(corres[src1->get_reg_num()]);
+			if (regs[src1->get_reg_num()] != -1) {
+				src1->set_reg_num(regs[src1->get_reg_num()]);
 			}
 
 		if (OPRegister *src2 = inst->get_reg_src2())
-			if (corres[src2->get_reg_num()] != -1)
-				src2->set_reg_num(corres[src2->get_reg_num()]);
+			if (regs[src2->get_reg_num()] != -1)
+				src2->set_reg_num(regs[src2->get_reg_num()]);
 
 		if (!frees->empty()) {
 			if (OPRegister *dest = inst->get_reg_dst()) {
 				int nb_dest = dest->get_reg_num();
 				if (nb_dest == 31)
-					continue; // on ne veut pas modifier $31....
+					continue;
 				if (DefLiveOut[nb_dest] == -1) {
-					newr = frees->front();
+					new_reg = frees->front();
 					frees->pop_front();
-					corres[nb_dest] = newr;
-					dest->set_reg_num(newr);
+					regs[nb_dest] = new_reg;
+					dest->set_reg_num(new_reg);
 				}
 			}
 		}

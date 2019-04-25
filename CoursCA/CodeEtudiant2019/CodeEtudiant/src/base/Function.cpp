@@ -427,7 +427,6 @@ void Function::compute_live_var() {
 
 	int size = (int) _myBB.size();
 	bb_it = _myBB.begin();
-	vector<bool> presence_bb(size, 0);
 	bool change = 0;
 
 	for (int i = 0; i < size; i++) {
@@ -441,7 +440,6 @@ void Function::compute_live_var() {
 		// récupérer la première référence de l'entête de note workinglist
 		bb_curr = workinglist.front();
 		workinglist.pop_front();
-		presence_bb[bb_curr->get_index()] = 1;
 
 		// LiveOut
 		if (bb_curr->get_nb_succ() != 0) {
@@ -464,7 +462,6 @@ void Function::compute_live_var() {
 			bb_curr->LiveIn[i] = bb_curr->Use[i]
 					|| (bb_curr->LiveOut[i] && !bb_curr->Def[i]);
 			if (val_bb != bb_curr->LiveIn[i]){
-				cout << "avant :" << val_bb << " | apres :" << bb_curr->LiveIn[i] << endl;
 				change = 1;
 			}
 		}
