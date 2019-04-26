@@ -574,41 +574,74 @@ void Basic_block::show_def_liveout() {
  Utilise comme registres disponibles ceux dont le num�ro est dans la liste param�tre
  *****/
 
-void Basic_block::reg_rename(list<int> *frees) {
-	compute_def_liveout(); // definition vivantes en sortie necessaires � connaitre
+void Basic_block::reg_rename(list<int> *frees){
+  Instruction * inst = get_first_instruction();
+  Instruction * last;
+  int newr;
+  compute_def_liveout();
 
-	/* A REMPLIR */
 
-	vector<int> regs(64, -1);
-	int new_reg;
+  /* A REMPLIR */
+  int redefini=0,nbrenommer=0;
+  for(int r=0;r<NB_REG;r++){
+  	if(Def[r]==1){
+  		if (DefLiveOut[r]!=-1){
+  			last=get_instruction_at_index(DefLiveOut[r]);
+  		}else{
+  			last=get_last_instruction();
+  		}
 
-	for (Instruction * inst = get_first_instruction(); inst; inst = inst->get_next()) {
-		if (OPRegister *src1 = inst->get_reg_src1())
-			if (regs[src1->get_reg_num()] != -1) {
-				src1->set_reg_num(regs[src1->get_reg_num()]);
+  		//cout << "TENTATIVE DE RENOMMAGE DE "<< r <<endl;
+  		newr=r;
+		bool renommer=false;
+  		inst = get_first_instruction();
+  		while(inst!=NULL && inst!=last){
+  			if (renommer){//si il a pas deja ete renommer ne pas les srcs (cas r est Livein)
+  				if (inst->get_reg_src1()!=NULL){
+  					if (inst->get_reg_src1()->get_reg_num()==r){
+  						inst->get_reg_src1()->set_reg_num(newr);
+						nbrenommer++;
+						}
+  				}
+  				if (inst->get_reg_src2()!=NULL){
+  					if (inst->get_reg_src2()->get_reg_num()==r){
+  						inst->get_reg_src2()->set_reg_num(newr);
+						nbrenommer++;
+						}
+  				}
+  			}
+  			if (inst->get_reg_dst()!=NULL){
+  				if (inst->get_reg_dst()->get_reg_num()==r){//Definition du nouveau registre
+  					renommer=true;
+  					if (!frees->empty()){
+  						newr=frees->front();
+  						frees->pop_front();
+  						inst->get_reg_dst()->set_reg_num(newr);
+  					}
+					redefini++;
+  				}
+  			}
+  			inst=inst->get_next();
+  		}
+  		//si traitement de la derniere instruction
+  		if (renommer){//si il a pas deja ete renommer ne pas les srcs (cas r est Livein)
+			if (inst->get_reg_src1()!=NULL){
+				if (inst->get_reg_src1()->get_reg_num()==r){
+					inst->get_reg_src1()->set_reg_num(newr);
+					nbrenommer++;
+				}
 			}
-
-		if (OPRegister *src2 = inst->get_reg_src2())
-			if (regs[src2->get_reg_num()] != -1)
-				src2->set_reg_num(regs[src2->get_reg_num()]);
-
-		if (!frees->empty()) {
-			if (OPRegister *dest = inst->get_reg_dst()) {
-				int nb_dest = dest->get_reg_num();
-				if (nb_dest == 31)
-					continue;
-				if (DefLiveOut[nb_dest] == -1) {
-					new_reg = frees->front();
-					frees->pop_front();
-					regs[nb_dest] = new_reg;
-					dest->set_reg_num(new_reg);
+			if (inst->get_reg_src2()!=NULL){
+				if (inst->get_reg_src2()->get_reg_num()==r){
+					inst->get_reg_src2()->set_reg_num(newr);
+					nbrenommer++;
 				}
 			}
 		}
 	}
-
-	/* FIN A REMPLIR */
-
+  }
+	//cout << "NOMBRE DE VARIABLE REDEFINI " << redefini <<endl;
+	//cout << "NOMBRE DE VARIABLE RENOMMER " << nbrenommer <<endl;
 }
 
 /**** renomme les registres renommables : ceux qui sont d�finis et utilis�s dans le bloc et dont la d�finition n'est pas vivante en sortie
