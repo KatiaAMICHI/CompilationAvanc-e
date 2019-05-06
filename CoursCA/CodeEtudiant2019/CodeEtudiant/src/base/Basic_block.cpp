@@ -583,6 +583,8 @@ void Basic_block::reg_rename(list<int> *frees){
 
   /* A REMPLIR */
   int redefini=0,nbrenommer=0;
+  bool renommer=false;
+
   for(int r=0;r<NB_REG;r++){
   	if(Def[r]==1){
   		if (DefLiveOut[r]!=-1){
@@ -591,26 +593,25 @@ void Basic_block::reg_rename(list<int> *frees){
   			last=get_last_instruction();
   		}
 
-  		//cout << "TENTATIVE DE RENOMMAGE DE "<< r <<endl;
   		newr=r;
-		bool renommer=false;
+		renommer=false;
   		inst = get_first_instruction();
   		while(inst!=NULL && inst!=last){
-  			if (renommer){//si il a pas deja ete renommer ne pas les srcs (cas r est Livein)
-  				if (inst->get_reg_src1()!=NULL){
+  			if (renommer){
+  				if (inst->get_reg_src1()){
   					if (inst->get_reg_src1()->get_reg_num()==r){
   						inst->get_reg_src1()->set_reg_num(newr);
 						nbrenommer++;
 						}
   				}
-  				if (inst->get_reg_src2()!=NULL){
+  				if (inst->get_reg_src2()){
   					if (inst->get_reg_src2()->get_reg_num()==r){
   						inst->get_reg_src2()->set_reg_num(newr);
 						nbrenommer++;
 						}
   				}
   			}
-  			if (inst->get_reg_dst()!=NULL){
+  			if (inst->get_reg_dst()){
   				if (inst->get_reg_dst()->get_reg_num()==r){//Definition du nouveau registre
   					renommer=true;
   					if (!frees->empty()){
@@ -625,18 +626,18 @@ void Basic_block::reg_rename(list<int> *frees){
   		}
   		//si traitement de la derniere instruction
   		if (renommer){//si il a pas deja ete renommer ne pas les srcs (cas r est Livein)
-			if (inst->get_reg_src1()!=NULL){
+			if (inst->get_reg_src1())
 				if (inst->get_reg_src1()->get_reg_num()==r){
 					inst->get_reg_src1()->set_reg_num(newr);
 					nbrenommer++;
 				}
-			}
-			if (inst->get_reg_src2()!=NULL){
+
+			if (inst->get_reg_src2())
 				if (inst->get_reg_src2()->get_reg_num()==r){
 					inst->get_reg_src2()->set_reg_num(newr);
 					nbrenommer++;
 				}
-			}
+
 		}
 	}
   }
