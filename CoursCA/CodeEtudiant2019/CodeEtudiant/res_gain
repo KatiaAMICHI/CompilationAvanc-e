@@ -1,0 +1,2202 @@
+yyerror at line 5 : syntax error
+yyerror at line 2586 : syntax error
+Le programme a 2568 lignes
+
+nombre de fonctions : 16
+test vaut 0 
+========== Function 0===========
+============================
+---------- BB 0 -----------
+Begin BB0
+rj_xtime:
+i0 addiu $29,$29,65520
+i1 sw $30,12($29)
+i2 or $30,$29,$0
+i3 or $2,$4,$0
+i4 sb $2,16($30)
+i5 lb $2,16($30)
+i6 bgez $2,$l2
+i7 add $0,$0,$0
+End BB0
+
+---nb_cycles : 11 -----------
+comput critical path
+critical path 8
+Scheduling 
+on cherche une instruction pour le delayed slot
+pas trouve d'instruction
+i0: addiu $29,$29,65520
+i1: sw $30,12($29)
+i2: or $30,$29,$0
+i3: or $2,$4,$0
+i4: sb $2,16($30)
+i5: lb $2,16($30)
+i6: bgez $2,$l2
+i7: add $0,$0,$0
+---- BB with new scheduling: -----
+Begin BB0
+rj_xtime:
+i0 addiu $29,$29,65520
+i1 sw $30,12($29)
+i2 or $30,$29,$0
+i3 or $2,$4,$0
+i4 sb $2,16($30)
+i5 lb $2,16($30)
+i6 bgez $2,$l2
+i7 add $0,$0,$0
+End BB0
+
+----------nb_cycles apres scheduling : 11  -----------
+----- apres renommage ------
+Begin BB0
+rj_xtime:
+i0 addiu $5,$29,65520
+i1 sw $30,12($5)
+i2 or $30,$5,$0
+i3 or $1,$4,$0
+i4 sb $1,16($30)
+i5 lb $3,16($30)
+i6 bgez $3,$l2
+i7 add $0,$0,$0
+End BB0
+
+----nb_cycles apres renommage : 10   ----
+comput critical path apres renommage
+critical path : 8
+Scheduling 
+on cherche une instruction pour le delayed slot
+pas trouve d'instruction
+---- renamed BB with new scheduling: -----
+Begin BB0
+rj_xtime:
+i0 addiu $5,$29,65520
+i1 sw $30,12($5)
+i2 or $30,$5,$0
+i3 or $1,$4,$0
+i4 sb $1,16($30)
+i5 lb $3,16($30)
+i6 bgez $3,$l2
+i7 add $0,$0,$0
+End BB0
+
+----nb_cycles apres renommage et scheduling : 10----
+ gain sched : 0; gain renommage 1; gain renommage sched 0
+---------- BB 1 -----------
+Begin BB1
+i0 lbu $2,16($30)
+i1 sll $2,$2,1
+i2 sll $2,$2,24
+i3 sra $2,$2,24
+i4 xori $2,$2,27
+i5 sll $2,$2,24
+i6 sra $2,$2,24
+i7 andi $2,$2,255
+i8 sw $2,0($30)
+i9 j $l3
+i10 add $0,$0,$0
+End BB1
+
+---nb_cycles : 12 -----------
+comput critical path
+critical path 11
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $2,0($30)
+i0: lbu $2,16($30)
+i1: sll $2,$2,1
+i2: sll $2,$2,24
+i3: sra $2,$2,24
+i4: xori $2,$2,27
+i5: sll $2,$2,24
+i6: sra $2,$2,24
+i7: andi $2,$2,255
+i9: j $l3
+i8: sw $2,0($30)
+---- BB with new scheduling: -----
+Begin BB1
+i0 lbu $2,16($30)
+i1 sll $2,$2,1
+i2 sll $2,$2,24
+i3 sra $2,$2,24
+i4 xori $2,$2,27
+i5 sll $2,$2,24
+i6 sra $2,$2,24
+i7 andi $2,$2,255
+i8 j $l3
+i9 sw $2,0($30)
+End BB1
+
+----------nb_cycles apres scheduling : 10  -----------
+----- apres renommage ------
+Begin BB1
+i0 lbu $1,16($30)
+i1 sll $3,$1,1
+i2 sll $4,$3,24
+i3 sra $5,$4,24
+i4 xori $6,$5,27
+i5 sll $7,$6,24
+i6 sra $8,$7,24
+i7 andi $9,$8,255
+i8 j $l3
+i9 sw $9,0($30)
+End BB1
+
+----nb_cycles apres renommage : 10   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 11
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB1
+i0 lbu $1,16($30)
+i1 sll $3,$1,1
+i2 sll $4,$3,24
+i3 sra $5,$4,24
+i4 xori $6,$5,27
+i5 sll $7,$6,24
+i6 sra $8,$7,24
+i7 andi $9,$8,255
+i8 j $l3
+i9 sw $9,0($30)
+End BB1
+
+----nb_cycles apres renommage et scheduling : 10----
+ gain sched : 2; gain renommage 0; gain renommage sched 0
+---------- BB 2 -----------
+Begin BB2
+$l2:
+i0 lbu $2,16($30)
+i1 sll $2,$2,1
+i2 andi $2,$2,255
+i3 sw $2,0($30)
+End BB2
+
+---nb_cycles : 5 -----------
+comput critical path
+critical path 5
+Scheduling 
+i0: lbu $2,16($30)
+i1: sll $2,$2,1
+i2: andi $2,$2,255
+i3: sw $2,0($30)
+---- BB with new scheduling: -----
+Begin BB2
+$l2:
+i0 lbu $2,16($30)
+i1 sll $2,$2,1
+i2 andi $2,$2,255
+i3 sw $2,0($30)
+End BB2
+
+----------nb_cycles apres scheduling : 5  -----------
+----- apres renommage ------
+Begin BB2
+$l2:
+i0 lbu $1,16($30)
+i1 sll $3,$1,1
+i2 andi $4,$3,255
+i3 sw $4,0($30)
+End BB2
+
+----nb_cycles apres renommage : 5   ----
+comput critical path apres renommage
+critical path : 5
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB2
+$l2:
+i0 lbu $1,16($30)
+i1 sll $3,$1,1
+i2 andi $4,$3,255
+i3 sw $4,0($30)
+End BB2
+
+----nb_cycles apres renommage et scheduling : 5----
+ gain sched : 0; gain renommage 0; gain renommage sched 0
+---------- BB 3 -----------
+Begin BB3
+$l3:
+i0 lw $2,0($30)
+i1 or $29,$30,$0
+i2 lw $30,12($29)
+i3 addiu $29,$29,16
+i4 jr $31
+i5 add $0,$0,$0
+End BB3
+
+---nb_cycles : 7 -----------
+comput critical path
+critical path 3
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction lw $2,0($30)
+i1: or $29,$30,$0
+i2: lw $30,12($29)
+i3: addiu $29,$29,16
+i4: jr $31
+i0: lw $2,0($30)
+---- BB with new scheduling: -----
+Begin BB3
+$l3:
+i0 or $29,$30,$0
+i1 lw $30,12($29)
+i2 addiu $29,$29,16
+i3 jr $31
+i4 lw $2,0($30)
+End BB3
+
+----------nb_cycles apres scheduling : 6  -----------
+----- apres renommage ------
+Begin BB3
+$l3:
+i0 or $1,$30,$0
+i1 lw $3,12($1)
+i2 addiu $29,$1,16
+i3 jr $31
+i4 lw $2,0($3)
+End BB3
+
+----nb_cycles apres renommage : 6   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 5
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB3
+$l3:
+i0 or $1,$30,$0
+i1 lw $3,12($1)
+i2 addiu $29,$1,16
+i3 jr $31
+i4 lw $2,0($3)
+End BB3
+
+----nb_cycles apres renommage et scheduling : 6----
+ gain sched : 1; gain renommage 0; gain renommage sched 0
+test vaut 0 
+========== Function 1===========
+============================
+---------- BB 0 -----------
+Begin BB0
+aes_subbytes:
+i0 addiu $29,$29,65512
+i1 sw $30,20($29)
+i2 or $30,$29,$0
+i3 sw $4,24($30)
+i4 lui $1,0
+i5 ori $2,$1,16
+i6 sw $2,8($30)
+i7 j $l6
+i8 add $0,$0,$0
+End BB0
+
+---nb_cycles : 12 -----------
+comput critical path
+critical path 4
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $4,24($30)
+i0: addiu $29,$29,65512
+i4: lui $1,0
+i1: sw $30,20($29)
+i2: or $30,$29,$0
+i5: ori $2,$1,16
+i6: sw $2,8($30)
+i7: j $l6
+i3: sw $4,24($30)
+---- BB with new scheduling: -----
+Begin BB0
+aes_subbytes:
+i0 addiu $29,$29,65512
+i1 lui $1,0
+i2 sw $30,20($29)
+i3 or $30,$29,$0
+i4 ori $2,$1,16
+i5 sw $2,8($30)
+i6 j $l6
+i7 sw $4,24($30)
+End BB0
+
+----------nb_cycles apres scheduling : 9  -----------
+----- apres renommage ------
+Begin BB0
+aes_subbytes:
+i0 addiu $6,$29,65512
+i1 lui $3,0
+i2 sw $30,20($6)
+i3 or $30,$6,$0
+i4 ori $5,$3,16
+i5 sw $5,8($30)
+i6 j $l6
+i7 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage : 9   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 4
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB0
+aes_subbytes:
+i0 addiu $6,$29,65512
+i1 lui $3,0
+i2 sw $30,20($6)
+i3 or $30,$6,$0
+i4 ori $5,$3,16
+i5 sw $5,8($30)
+i6 j $l6
+i7 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage et scheduling : 9----
+ gain sched : 3; gain renommage 0; gain renommage sched 0
+---------- BB 1 -----------
+Begin BB1
+$l7:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $4,$2,$3
+i3 lw $3,8($30)
+i4 lw $2,24($30)
+i5 addu $2,$2,$3
+i6 lbu $2,0($2)
+i7 or $3,$2,$0
+i8 lui $2,%hi(sbox)
+i9 addiu $2,$2,%lo(sbox)
+i10 addu $2,$3,$2
+i11 lbu $2,0($2)
+i12 sb $2,0($4)
+End BB1
+
+---nb_cycles : 17 -----------
+comput critical path
+critical path 13
+Scheduling 
+i0: lw $3,8($30)
+i1: lw $2,24($30)
+i2: addu $4,$2,$3
+i4: lw $2,24($30)
+i3: lw $3,8($30)
+i5: addu $2,$2,$3
+i6: lbu $2,0($2)
+i7: or $3,$2,$0
+i8: lui $2,%hi(sbox)
+i9: addiu $2,$2,%lo(sbox)
+i10: addu $2,$3,$2
+i11: lbu $2,0($2)
+i12: sb $2,0($4)
+---- BB with new scheduling: -----
+Begin BB1
+$l7:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $4,$2,$3
+i3 lw $2,24($30)
+i4 lw $3,8($30)
+i5 addu $2,$2,$3
+i6 lbu $2,0($2)
+i7 or $3,$2,$0
+i8 lui $2,%hi(sbox)
+i9 addiu $2,$2,%lo(sbox)
+i10 addu $2,$3,$2
+i11 lbu $2,0($2)
+i12 sb $2,0($4)
+End BB1
+
+----------nb_cycles apres scheduling : 17  -----------
+----- apres renommage ------
+Begin BB1
+$l7:
+i0 lw $12,8($30)
+i1 lw $1,24($30)
+i2 addu $15,$1,$12
+i3 lw $5,24($30)
+i4 lw $13,8($30)
+i5 addu $6,$5,$13
+i6 lbu $7,0($6)
+i7 or $14,$7,$0
+i8 lui $8,%hi(sbox)
+i9 addiu $9,$8,%lo(sbox)
+i10 addu $10,$14,$9
+i11 lbu $11,0($10)
+i12 sb $11,0($15)
+End BB1
+
+----nb_cycles apres renommage : 16   ----
+comput critical path apres renommage
+critical path : 10
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB1
+$l7:
+i0 lw $5,24($30)
+i1 lw $13,8($30)
+i2 lui $8,%hi(sbox)
+i3 addu $6,$5,$13
+i4 lbu $7,0($6)
+i5 addiu $9,$8,%lo(sbox)
+i6 or $14,$7,$0
+i7 lw $12,8($30)
+i8 lw $1,24($30)
+i9 addu $10,$14,$9
+i10 lbu $11,0($10)
+i11 addu $15,$1,$12
+i12 sb $11,0($15)
+End BB1
+
+----nb_cycles apres renommage et scheduling : 16----
+ gain sched : 0; gain renommage 1; gain renommage sched 0
+---------- BB 2 -----------
+Begin BB2
+$l6:
+i0 lw $3,8($30)
+i1 sltu $2,$0,$3
+i2 andi $3,$2,255
+i3 lw $4,8($30)
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 sw $2,8($30)
+i7 bne $3,$0,$l7
+i8 add $0,$0,$0
+End BB2
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 7
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $2,8($30)
+i0: lw $3,8($30)
+i3: lw $4,8($30)
+i1: sltu $2,$0,$3
+i2: andi $3,$2,255
+i4: addiu $2,$4,65535
+i5: andi $2,$2,255
+i7: bne $3,$0,$l7
+i6: sw $2,8($30)
+---- BB with new scheduling: -----
+Begin BB2
+$l6:
+i0 lw $3,8($30)
+i1 lw $4,8($30)
+i2 sltu $2,$0,$3
+i3 andi $3,$2,255
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 bne $3,$0,$l7
+i7 sw $2,8($30)
+End BB2
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB2
+$l6:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 andi $8,$1,255
+i4 addiu $5,$9,65535
+i5 andi $6,$5,255
+i6 bne $8,$0,$l7
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage : 8   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 7
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB2
+$l6:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 addiu $5,$9,65535
+i4 andi $8,$1,255
+i5 andi $6,$5,255
+i6 bne $8,$0,$l7
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage et scheduling : 8----
+ gain sched : 2; gain renommage 0; gain renommage sched 0
+---------- BB 3 -----------
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 sw $2,0($30)
+i3 or $29,$30,$0
+i4 lw $30,20($29)
+i5 addiu $29,$29,24
+i6 jr $31
+i7 add $0,$0,$0
+End BB3
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 5
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction addiu $29,$29,24
+i0: lui $1,0
+i1: ori $2,$1,1
+i3: or $29,$30,$0
+i2: sw $2,0($30)
+i4: lw $30,20($29)
+i6: jr $31
+i5: addiu $29,$29,24
+---- BB with new scheduling: -----
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 or $29,$30,$0
+i3 sw $2,0($30)
+i4 lw $30,20($29)
+i5 jr $31
+i6 addiu $29,$29,24
+End BB3
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage : 7   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 5
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage et scheduling : 7----
+ gain sched : 2; gain renommage 1; gain renommage sched 0
+test vaut 0 
+========== Function 2===========
+============================
+---------- BB 0 -----------
+Begin BB0
+aes_subbytes_inv:
+i0 addiu $29,$29,65512
+i1 sw $30,20($29)
+i2 or $30,$29,$0
+i3 sw $4,24($30)
+i4 lui $1,0
+i5 ori $2,$1,16
+i6 sw $2,8($30)
+i7 j $l10
+i8 add $0,$0,$0
+End BB0
+
+---nb_cycles : 12 -----------
+comput critical path
+critical path 4
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $4,24($30)
+i0: addiu $29,$29,65512
+i4: lui $1,0
+i1: sw $30,20($29)
+i2: or $30,$29,$0
+i5: ori $2,$1,16
+i6: sw $2,8($30)
+i7: j $l10
+i3: sw $4,24($30)
+---- BB with new scheduling: -----
+Begin BB0
+aes_subbytes_inv:
+i0 addiu $29,$29,65512
+i1 lui $1,0
+i2 sw $30,20($29)
+i3 or $30,$29,$0
+i4 ori $2,$1,16
+i5 sw $2,8($30)
+i6 j $l10
+i7 sw $4,24($30)
+End BB0
+
+----------nb_cycles apres scheduling : 9  -----------
+----- apres renommage ------
+Begin BB0
+aes_subbytes_inv:
+i0 addiu $6,$29,65512
+i1 lui $3,0
+i2 sw $30,20($6)
+i3 or $30,$6,$0
+i4 ori $5,$3,16
+i5 sw $5,8($30)
+i6 j $l10
+i7 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage : 9   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 4
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB0
+aes_subbytes_inv:
+i0 addiu $6,$29,65512
+i1 lui $3,0
+i2 sw $30,20($6)
+i3 or $30,$6,$0
+i4 ori $5,$3,16
+i5 sw $5,8($30)
+i6 j $l10
+i7 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage et scheduling : 9----
+ gain sched : 3; gain renommage 0; gain renommage sched 0
+---------- BB 1 -----------
+Begin BB1
+$l11:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $4,$2,$3
+i3 lw $3,8($30)
+i4 lw $2,24($30)
+i5 addu $2,$2,$3
+i6 lbu $2,0($2)
+i7 or $3,$2,$0
+i8 lui $2,%hi(sboxinv)
+i9 addiu $2,$2,%lo(sboxinv)
+i10 addu $2,$3,$2
+i11 lbu $2,0($2)
+i12 sb $2,0($4)
+End BB1
+
+---nb_cycles : 17 -----------
+comput critical path
+critical path 13
+Scheduling 
+i0: lw $3,8($30)
+i1: lw $2,24($30)
+i2: addu $4,$2,$3
+i4: lw $2,24($30)
+i3: lw $3,8($30)
+i5: addu $2,$2,$3
+i6: lbu $2,0($2)
+i7: or $3,$2,$0
+i8: lui $2,%hi(sboxinv)
+i9: addiu $2,$2,%lo(sboxinv)
+i10: addu $2,$3,$2
+i11: lbu $2,0($2)
+i12: sb $2,0($4)
+---- BB with new scheduling: -----
+Begin BB1
+$l11:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $4,$2,$3
+i3 lw $2,24($30)
+i4 lw $3,8($30)
+i5 addu $2,$2,$3
+i6 lbu $2,0($2)
+i7 or $3,$2,$0
+i8 lui $2,%hi(sboxinv)
+i9 addiu $2,$2,%lo(sboxinv)
+i10 addu $2,$3,$2
+i11 lbu $2,0($2)
+i12 sb $2,0($4)
+End BB1
+
+----------nb_cycles apres scheduling : 17  -----------
+----- apres renommage ------
+Begin BB1
+$l11:
+i0 lw $12,8($30)
+i1 lw $1,24($30)
+i2 addu $15,$1,$12
+i3 lw $5,24($30)
+i4 lw $13,8($30)
+i5 addu $6,$5,$13
+i6 lbu $7,0($6)
+i7 or $14,$7,$0
+i8 lui $8,%hi(sboxinv)
+i9 addiu $9,$8,%lo(sboxinv)
+i10 addu $10,$14,$9
+i11 lbu $11,0($10)
+i12 sb $11,0($15)
+End BB1
+
+----nb_cycles apres renommage : 16   ----
+comput critical path apres renommage
+critical path : 10
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB1
+$l11:
+i0 lw $5,24($30)
+i1 lw $13,8($30)
+i2 lui $8,%hi(sboxinv)
+i3 addu $6,$5,$13
+i4 lbu $7,0($6)
+i5 addiu $9,$8,%lo(sboxinv)
+i6 or $14,$7,$0
+i7 lw $12,8($30)
+i8 lw $1,24($30)
+i9 addu $10,$14,$9
+i10 lbu $11,0($10)
+i11 addu $15,$1,$12
+i12 sb $11,0($15)
+End BB1
+
+----nb_cycles apres renommage et scheduling : 16----
+ gain sched : 0; gain renommage 1; gain renommage sched 0
+---------- BB 2 -----------
+Begin BB2
+$l10:
+i0 lw $3,8($30)
+i1 sltu $2,$0,$3
+i2 andi $3,$2,255
+i3 lw $4,8($30)
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 sw $2,8($30)
+i7 bne $3,$0,$l11
+i8 add $0,$0,$0
+End BB2
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 7
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $2,8($30)
+i0: lw $3,8($30)
+i3: lw $4,8($30)
+i1: sltu $2,$0,$3
+i2: andi $3,$2,255
+i4: addiu $2,$4,65535
+i5: andi $2,$2,255
+i7: bne $3,$0,$l11
+i6: sw $2,8($30)
+---- BB with new scheduling: -----
+Begin BB2
+$l10:
+i0 lw $3,8($30)
+i1 lw $4,8($30)
+i2 sltu $2,$0,$3
+i3 andi $3,$2,255
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 bne $3,$0,$l11
+i7 sw $2,8($30)
+End BB2
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB2
+$l10:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 andi $8,$1,255
+i4 addiu $5,$9,65535
+i5 andi $6,$5,255
+i6 bne $8,$0,$l11
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage : 8   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 7
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB2
+$l10:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 addiu $5,$9,65535
+i4 andi $8,$1,255
+i5 andi $6,$5,255
+i6 bne $8,$0,$l11
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage et scheduling : 8----
+ gain sched : 2; gain renommage 0; gain renommage sched 0
+---------- BB 3 -----------
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 sw $2,0($30)
+i3 or $29,$30,$0
+i4 lw $30,20($29)
+i5 addiu $29,$29,24
+i6 jr $31
+i7 add $0,$0,$0
+End BB3
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 5
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction addiu $29,$29,24
+i0: lui $1,0
+i1: ori $2,$1,1
+i3: or $29,$30,$0
+i2: sw $2,0($30)
+i4: lw $30,20($29)
+i6: jr $31
+i5: addiu $29,$29,24
+---- BB with new scheduling: -----
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 or $29,$30,$0
+i3 sw $2,0($30)
+i4 lw $30,20($29)
+i5 jr $31
+i6 addiu $29,$29,24
+End BB3
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage : 7   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 5
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage et scheduling : 7----
+ gain sched : 2; gain renommage 1; gain renommage sched 0
+test vaut 0 
+========== Function 3===========
+============================
+---------- BB 0 -----------
+Begin BB0
+aes_addroundkey:
+i0 addiu $29,$29,65512
+i1 sw $30,20($29)
+i2 or $30,$29,$0
+i3 sw $4,24($30)
+i4 sw $5,28($30)
+i5 lui $1,0
+i6 ori $2,$1,16
+i7 sw $2,8($30)
+i8 j $l14
+i9 add $0,$0,$0
+End BB0
+
+---nb_cycles : 13 -----------
+comput critical path
+critical path 4
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $4,24($30)
+i0: addiu $29,$29,65512
+i5: lui $1,0
+i1: sw $30,20($29)
+i2: or $30,$29,$0
+i6: ori $2,$1,16
+i4: sw $5,28($30)
+i7: sw $2,8($30)
+i8: j $l14
+i3: sw $4,24($30)
+---- BB with new scheduling: -----
+Begin BB0
+aes_addroundkey:
+i0 addiu $29,$29,65512
+i1 lui $1,0
+i2 sw $30,20($29)
+i3 or $30,$29,$0
+i4 ori $2,$1,16
+i5 sw $5,28($30)
+i6 sw $2,8($30)
+i7 j $l14
+i8 sw $4,24($30)
+End BB0
+
+----------nb_cycles apres scheduling : 9  -----------
+----- apres renommage ------
+Begin BB0
+aes_addroundkey:
+i0 addiu $7,$29,65512
+i1 lui $3,0
+i2 sw $30,20($7)
+i3 or $30,$7,$0
+i4 ori $6,$3,16
+i5 sw $5,28($30)
+i6 sw $6,8($30)
+i7 j $l14
+i8 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage : 9   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 4
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB0
+aes_addroundkey:
+i0 addiu $7,$29,65512
+i1 lui $3,0
+i2 sw $30,20($7)
+i3 or $30,$7,$0
+i4 ori $6,$3,16
+i5 sw $5,28($30)
+i6 sw $6,8($30)
+i7 j $l14
+i8 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage et scheduling : 9----
+ gain sched : 4; gain renommage 0; gain renommage sched 0
+---------- BB 1 -----------
+Begin BB1
+$l15:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $5,$2,$3
+i3 lw $3,8($30)
+i4 lw $2,24($30)
+i5 addu $2,$2,$3
+i6 lbu $4,0($2)
+i7 lw $3,8($30)
+i8 lw $2,28($30)
+i9 addu $2,$2,$3
+i10 lbu $2,0($2)
+i11 xor $2,$4,$2
+i12 andi $2,$2,255
+i13 sb $2,0($5)
+End BB1
+
+---nb_cycles : 18 -----------
+comput critical path
+critical path 13
+Scheduling 
+i0: lw $3,8($30)
+i1: lw $2,24($30)
+i2: addu $5,$2,$3
+i4: lw $2,24($30)
+i3: lw $3,8($30)
+i5: addu $2,$2,$3
+i6: lbu $4,0($2)
+i8: lw $2,28($30)
+i7: lw $3,8($30)
+i9: addu $2,$2,$3
+i10: lbu $2,0($2)
+i11: xor $2,$4,$2
+i12: andi $2,$2,255
+i13: sb $2,0($5)
+---- BB with new scheduling: -----
+Begin BB1
+$l15:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $5,$2,$3
+i3 lw $2,24($30)
+i4 lw $3,8($30)
+i5 addu $2,$2,$3
+i6 lbu $4,0($2)
+i7 lw $2,28($30)
+i8 lw $3,8($30)
+i9 addu $2,$2,$3
+i10 lbu $2,0($2)
+i11 xor $2,$4,$2
+i12 andi $2,$2,255
+i13 sb $2,0($5)
+End BB1
+
+----------nb_cycles apres scheduling : 19  -----------
+----- apres renommage ------
+Begin BB1
+$l15:
+i0 lw $13,8($30)
+i1 lw $1,24($30)
+i2 addu $17,$1,$13
+i3 lw $6,24($30)
+i4 lw $14,8($30)
+i5 addu $7,$6,$14
+i6 lbu $16,0($7)
+i7 lw $8,28($30)
+i8 lw $15,8($30)
+i9 addu $9,$8,$15
+i10 lbu $10,0($9)
+i11 xor $11,$16,$10
+i12 andi $12,$11,255
+i13 sb $12,0($17)
+End BB1
+
+----nb_cycles apres renommage : 17   ----
+comput critical path apres renommage
+critical path : 8
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB1
+$l15:
+i0 lw $6,24($30)
+i1 lw $14,8($30)
+i2 lw $8,28($30)
+i3 lw $15,8($30)
+i4 addu $7,$6,$14
+i5 addu $9,$8,$15
+i6 lbu $16,0($7)
+i7 lbu $10,0($9)
+i8 lw $13,8($30)
+i9 lw $1,24($30)
+i10 xor $11,$16,$10
+i11 addu $17,$1,$13
+i12 andi $12,$11,255
+i13 sb $12,0($17)
+End BB1
+
+----nb_cycles apres renommage et scheduling : 15----
+ gain sched : -1; gain renommage 2; gain renommage sched 2
+---------- BB 2 -----------
+Begin BB2
+$l14:
+i0 lw $3,8($30)
+i1 sltu $2,$0,$3
+i2 andi $3,$2,255
+i3 lw $4,8($30)
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 sw $2,8($30)
+i7 bne $3,$0,$l15
+i8 add $0,$0,$0
+End BB2
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 7
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $2,8($30)
+i0: lw $3,8($30)
+i3: lw $4,8($30)
+i1: sltu $2,$0,$3
+i2: andi $3,$2,255
+i4: addiu $2,$4,65535
+i5: andi $2,$2,255
+i7: bne $3,$0,$l15
+i6: sw $2,8($30)
+---- BB with new scheduling: -----
+Begin BB2
+$l14:
+i0 lw $3,8($30)
+i1 lw $4,8($30)
+i2 sltu $2,$0,$3
+i3 andi $3,$2,255
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 bne $3,$0,$l15
+i7 sw $2,8($30)
+End BB2
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB2
+$l14:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 andi $8,$1,255
+i4 addiu $5,$9,65535
+i5 andi $6,$5,255
+i6 bne $8,$0,$l15
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage : 8   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 7
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB2
+$l14:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 addiu $5,$9,65535
+i4 andi $8,$1,255
+i5 andi $6,$5,255
+i6 bne $8,$0,$l15
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage et scheduling : 8----
+ gain sched : 2; gain renommage 0; gain renommage sched 0
+---------- BB 3 -----------
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 sw $2,0($30)
+i3 or $29,$30,$0
+i4 lw $30,20($29)
+i5 addiu $29,$29,24
+i6 jr $31
+i7 add $0,$0,$0
+End BB3
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 5
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction addiu $29,$29,24
+i0: lui $1,0
+i1: ori $2,$1,1
+i3: or $29,$30,$0
+i2: sw $2,0($30)
+i4: lw $30,20($29)
+i6: jr $31
+i5: addiu $29,$29,24
+---- BB with new scheduling: -----
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 or $29,$30,$0
+i3 sw $2,0($30)
+i4 lw $30,20($29)
+i5 jr $31
+i6 addiu $29,$29,24
+End BB3
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage : 7   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 5
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage et scheduling : 7----
+ gain sched : 2; gain renommage 1; gain renommage sched 0
+test vaut 0 
+========== Function 4===========
+============================
+---------- BB 0 -----------
+Begin BB0
+aes_addroundkey_cpy:
+i0 addiu $29,$29,65512
+i1 sw $30,20($29)
+i2 or $30,$29,$0
+i3 sw $4,24($30)
+i4 sw $5,28($30)
+i5 sw $6,32($30)
+i6 lui $1,0
+i7 ori $2,$1,16
+i8 sw $2,8($30)
+i9 j $l18
+i10 add $0,$0,$0
+End BB0
+
+---nb_cycles : 14 -----------
+comput critical path
+critical path 4
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $4,24($30)
+i0: addiu $29,$29,65512
+i6: lui $1,0
+i1: sw $30,20($29)
+i2: or $30,$29,$0
+i7: ori $2,$1,16
+i4: sw $5,28($30)
+i5: sw $6,32($30)
+i8: sw $2,8($30)
+i9: j $l18
+i3: sw $4,24($30)
+---- BB with new scheduling: -----
+Begin BB0
+aes_addroundkey_cpy:
+i0 addiu $29,$29,65512
+i1 lui $1,0
+i2 sw $30,20($29)
+i3 or $30,$29,$0
+i4 ori $2,$1,16
+i5 sw $5,28($30)
+i6 sw $6,32($30)
+i7 sw $2,8($30)
+i8 j $l18
+i9 sw $4,24($30)
+End BB0
+
+----------nb_cycles apres scheduling : 10  -----------
+----- apres renommage ------
+Begin BB0
+aes_addroundkey_cpy:
+i0 addiu $8,$29,65512
+i1 lui $3,0
+i2 sw $30,20($8)
+i3 or $30,$8,$0
+i4 ori $7,$3,16
+i5 sw $5,28($30)
+i6 sw $6,32($30)
+i7 sw $7,8($30)
+i8 j $l18
+i9 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage : 10   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 4
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB0
+aes_addroundkey_cpy:
+i0 addiu $8,$29,65512
+i1 lui $3,0
+i2 sw $30,20($8)
+i3 or $30,$8,$0
+i4 ori $7,$3,16
+i5 sw $5,28($30)
+i6 sw $6,32($30)
+i7 sw $7,8($30)
+i8 j $l18
+i9 sw $4,24($30)
+End BB0
+
+----nb_cycles apres renommage et scheduling : 10----
+ gain sched : 4; gain renommage 0; gain renommage sched 0
+---------- BB 1 -----------
+Begin BB1
+$l19:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $5,$2,$3
+i3 lw $3,8($30)
+i4 lw $2,24($30)
+i5 addu $2,$2,$3
+i6 lbu $4,0($2)
+i7 lw $3,8($30)
+i8 lw $2,28($30)
+i9 addu $2,$2,$3
+i10 lbu $2,0($2)
+i11 xor $2,$4,$2
+i12 andi $2,$2,255
+i13 sb $2,0($5)
+i14 lw $3,8($30)
+i15 lw $2,32($30)
+i16 addu $4,$2,$3
+i17 lw $3,8($30)
+i18 lw $2,28($30)
+i19 addu $2,$2,$3
+i20 lbu $2,0($2)
+i21 sb $2,0($4)
+i22 lw $2,8($30)
+i23 addiu $3,$2,16
+i24 lw $2,32($30)
+i25 addu $4,$2,$3
+i26 lw $2,8($30)
+i27 addiu $3,$2,16
+i28 lw $2,28($30)
+i29 addu $2,$2,$3
+i30 lbu $2,0($2)
+i31 sb $2,0($4)
+End BB1
+
+---nb_cycles : 45 -----------
+comput critical path
+critical path 33
+Scheduling 
+i0: lw $3,8($30)
+i1: lw $2,24($30)
+i2: addu $5,$2,$3
+i4: lw $2,24($30)
+i3: lw $3,8($30)
+i5: addu $2,$2,$3
+i6: lbu $4,0($2)
+i8: lw $2,28($30)
+i7: lw $3,8($30)
+i9: addu $2,$2,$3
+i10: lbu $2,0($2)
+i11: xor $2,$4,$2
+i12: andi $2,$2,255
+i13: sb $2,0($5)
+i14: lw $3,8($30)
+i15: lw $2,32($30)
+i16: addu $4,$2,$3
+i18: lw $2,28($30)
+i17: lw $3,8($30)
+i19: addu $2,$2,$3
+i20: lbu $2,0($2)
+i21: sb $2,0($4)
+i22: lw $2,8($30)
+i23: addiu $3,$2,16
+i24: lw $2,32($30)
+i25: addu $4,$2,$3
+i26: lw $2,8($30)
+i27: addiu $3,$2,16
+i28: lw $2,28($30)
+i29: addu $2,$2,$3
+i30: lbu $2,0($2)
+i31: sb $2,0($4)
+---- BB with new scheduling: -----
+Begin BB1
+$l19:
+i0 lw $3,8($30)
+i1 lw $2,24($30)
+i2 addu $5,$2,$3
+i3 lw $2,24($30)
+i4 lw $3,8($30)
+i5 addu $2,$2,$3
+i6 lbu $4,0($2)
+i7 lw $2,28($30)
+i8 lw $3,8($30)
+i9 addu $2,$2,$3
+i10 lbu $2,0($2)
+i11 xor $2,$4,$2
+i12 andi $2,$2,255
+i13 sb $2,0($5)
+i14 lw $3,8($30)
+i15 lw $2,32($30)
+i16 addu $4,$2,$3
+i17 lw $2,28($30)
+i18 lw $3,8($30)
+i19 addu $2,$2,$3
+i20 lbu $2,0($2)
+i21 sb $2,0($4)
+i22 lw $2,8($30)
+i23 addiu $3,$2,16
+i24 lw $2,32($30)
+i25 addu $4,$2,$3
+i26 lw $2,8($30)
+i27 addiu $3,$2,16
+i28 lw $2,28($30)
+i29 addu $2,$2,$3
+i30 lbu $2,0($2)
+i31 sb $2,0($4)
+End BB1
+
+----------nb_cycles apres scheduling : 46  -----------
+----- apres renommage ------
+Begin BB1
+$l19:
+i0 lw $23,8($30)
+i1 lw $1,24($30)
+i2 addu $5,$1,$23
+i3 lw $6,24($30)
+i4 lw $24,8($30)
+i5 addu $7,$6,$24
+i6 lbu $4,0($7)
+i7 lw $8,28($30)
+i8 lw $25,8($30)
+i9 addu $9,$8,$25
+i10 lbu $10,0($9)
+i11 xor $11,$4,$10
+i12 andi $12,$11,255
+i13 sb $12,0($5)
+i14 lw $26,8($30)
+i15 lw $13,32($30)
+i16 addu $4,$13,$26
+i17 lw $14,28($30)
+i18 lw $27,8($30)
+i19 addu $15,$14,$27
+i20 lbu $16,0($15)
+i21 sb $16,0($4)
+i22 lw $17,8($30)
+i23 addiu $28,$17,16
+i24 lw $18,32($30)
+i25 addu $4,$18,$28
+i26 lw $19,8($30)
+i27 addiu $29,$19,16
+i28 lw $20,28($30)
+i29 addu $21,$20,$29
+i30 lbu $22,0($21)
+i31 sb $22,0($4)
+End BB1
+
+----nb_cycles apres renommage : 39   ----
+comput critical path apres renommage
+critical path : 21
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB1
+$l19:
+i0 lw $6,24($30)
+i1 lw $24,8($30)
+i2 lw $8,28($30)
+i3 lw $25,8($30)
+i4 addu $7,$6,$24
+i5 addu $9,$8,$25
+i6 lbu $4,0($7)
+i7 lbu $10,0($9)
+i8 lw $23,8($30)
+i9 lw $1,24($30)
+i10 xor $11,$4,$10
+i11 addu $5,$1,$23
+i12 andi $12,$11,255
+i13 sb $12,0($5)
+i14 lw $14,28($30)
+i15 lw $27,8($30)
+i16 lw $26,8($30)
+i17 lw $13,32($30)
+i18 addu $15,$14,$27
+i19 lbu $16,0($15)
+i20 addu $4,$13,$26
+i21 sb $16,0($4)
+i22 lw $19,8($30)
+i23 lw $20,28($30)
+i24 lw $17,8($30)
+i25 addiu $29,$19,16
+i26 lw $18,32($30)
+i27 addu $21,$20,$29
+i28 lbu $22,0($21)
+i29 addiu $28,$17,16
+i30 addu $4,$18,$28
+i31 sb $22,0($4)
+End BB1
+
+----nb_cycles apres renommage et scheduling : 37----
+ gain sched : -1; gain renommage 7; gain renommage sched 2
+---------- BB 2 -----------
+Begin BB2
+$l18:
+i0 lw $3,8($30)
+i1 sltu $2,$0,$3
+i2 andi $3,$2,255
+i3 lw $4,8($30)
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 sw $2,8($30)
+i7 bne $3,$0,$l19
+i8 add $0,$0,$0
+End BB2
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 7
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction sw $2,8($30)
+i0: lw $3,8($30)
+i3: lw $4,8($30)
+i1: sltu $2,$0,$3
+i2: andi $3,$2,255
+i4: addiu $2,$4,65535
+i5: andi $2,$2,255
+i7: bne $3,$0,$l19
+i6: sw $2,8($30)
+---- BB with new scheduling: -----
+Begin BB2
+$l18:
+i0 lw $3,8($30)
+i1 lw $4,8($30)
+i2 sltu $2,$0,$3
+i3 andi $3,$2,255
+i4 addiu $2,$4,65535
+i5 andi $2,$2,255
+i6 bne $3,$0,$l19
+i7 sw $2,8($30)
+End BB2
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB2
+$l18:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 andi $8,$1,255
+i4 addiu $5,$9,65535
+i5 andi $6,$5,255
+i6 bne $8,$0,$l19
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage : 8   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 7
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB2
+$l18:
+i0 lw $7,8($30)
+i1 lw $9,8($30)
+i2 sltu $1,$0,$7
+i3 addiu $5,$9,65535
+i4 andi $8,$1,255
+i5 andi $6,$5,255
+i6 bne $8,$0,$l19
+i7 sw $6,8($30)
+End BB2
+
+----nb_cycles apres renommage et scheduling : 8----
+ gain sched : 2; gain renommage 0; gain renommage sched 0
+---------- BB 3 -----------
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 sw $2,0($30)
+i3 or $29,$30,$0
+i4 lw $30,20($29)
+i5 addiu $29,$29,24
+i6 jr $31
+i7 add $0,$0,$0
+End BB3
+
+---nb_cycles : 10 -----------
+comput critical path
+critical path 5
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction addiu $29,$29,24
+i0: lui $1,0
+i1: ori $2,$1,1
+i3: or $29,$30,$0
+i2: sw $2,0($30)
+i4: lw $30,20($29)
+i6: jr $31
+i5: addiu $29,$29,24
+---- BB with new scheduling: -----
+Begin BB3
+i0 lui $1,0
+i1 ori $2,$1,1
+i2 or $29,$30,$0
+i3 sw $2,0($30)
+i4 lw $30,20($29)
+i5 jr $31
+i6 addiu $29,$29,24
+End BB3
+
+----------nb_cycles apres scheduling : 8  -----------
+----- apres renommage ------
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage : 7   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 5
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB3
+i0 lui $3,0
+i1 ori $2,$3,1
+i2 or $4,$30,$0
+i3 sw $2,0($30)
+i4 lw $5,20($4)
+i5 jr $31
+i6 addiu $29,$4,24
+End BB3
+
+----nb_cycles apres renommage et scheduling : 7----
+ gain sched : 2; gain renommage 1; gain renommage sched 0
+test vaut 0 
+========== Function 5===========
+============================
+---------- BB 0 -----------
+Begin BB0
+aes_shiftrows:
+i0 addiu $29,$29,65520
+i1 sw $30,12($29)
+i2 or $30,$29,$0
+i3 sw $4,16($30)
+i4 lw $2,16($30)
+i5 addiu $2,$2,1
+i6 lbu $2,0($2)
+i7 sw $2,4($30)
+i8 lw $2,16($30)
+i9 addiu $3,$2,1
+i10 lw $2,16($30)
+i11 addiu $2,$2,5
+i12 lbu $2,0($2)
+i13 sb $2,0($3)
+i14 lw $2,16($30)
+i15 addiu $3,$2,5
+i16 lw $2,16($30)
+i17 addiu $2,$2,9
+i18 lbu $2,0($2)
+i19 sb $2,0($3)
+i20 lw $2,16($30)
+i21 addiu $3,$2,9
+i22 lw $2,16($30)
+i23 addiu $2,$2,13
+i24 lbu $2,0($2)
+i25 sb $2,0($3)
+i26 lw $2,16($30)
+i27 addiu $2,$2,13
+i28 lw $3,4($30)
+i29 sb $3,0($2)
+i30 lw $2,16($30)
+i31 addiu $2,$2,10
+i32 lbu $2,0($2)
+i33 sw $2,4($30)
+i34 lw $2,16($30)
+i35 addiu $3,$2,10
+i36 lw $2,16($30)
+i37 addiu $2,$2,2
+i38 lbu $2,0($2)
+i39 sb $2,0($3)
+i40 lw $2,16($30)
+i41 addiu $2,$2,2
+i42 lw $3,4($30)
+i43 sb $3,0($2)
+i44 lw $2,16($30)
+i45 addiu $2,$2,3
+i46 lbu $2,0($2)
+i47 sw $2,0($30)
+i48 lw $2,16($30)
+i49 addiu $3,$2,3
+i50 lw $2,16($30)
+i51 addiu $2,$2,15
+i52 lbu $2,0($2)
+i53 sb $2,0($3)
+i54 lw $2,16($30)
+i55 addiu $3,$2,15
+i56 lw $2,16($30)
+i57 addiu $2,$2,11
+i58 lbu $2,0($2)
+i59 sb $2,0($3)
+i60 lw $2,16($30)
+i61 addiu $3,$2,11
+i62 lw $2,16($30)
+i63 addiu $2,$2,7
+i64 lbu $2,0($2)
+i65 sb $2,0($3)
+i66 lw $2,16($30)
+i67 addiu $2,$2,7
+i68 lw $3,0($30)
+i69 sb $3,0($2)
+i70 lw $2,16($30)
+i71 addiu $2,$2,14
+i72 lbu $2,0($2)
+i73 sw $2,0($30)
+i74 lw $2,16($30)
+i75 addiu $3,$2,14
+i76 lw $2,16($30)
+i77 addiu $2,$2,6
+i78 lbu $2,0($2)
+i79 sb $2,0($3)
+i80 lw $2,16($30)
+i81 addiu $2,$2,6
+i82 lw $3,0($30)
+i83 sb $3,0($2)
+i84 or $29,$30,$0
+i85 lw $30,12($29)
+i86 addiu $29,$29,16
+i87 jr $31
+i88 add $0,$0,$0
+End BB0
+
+---nb_cycles : 143 -----------
+comput critical path
+critical path 105
+Scheduling 
+on cherche une instruction pour le delayed slot
+trouve instruction addiu $29,$29,16
+i0: addiu $29,$29,65520
+i1: sw $30,12($29)
+i2: or $30,$29,$0
+i3: sw $4,16($30)
+i4: lw $2,16($30)
+i5: addiu $2,$2,1
+i6: lbu $2,0($2)
+i7: sw $2,4($30)
+i8: lw $2,16($30)
+i84: or $29,$30,$0
+i9: addiu $3,$2,1
+i10: lw $2,16($30)
+i11: addiu $2,$2,5
+i12: lbu $2,0($2)
+i13: sb $2,0($3)
+i14: lw $2,16($30)
+i15: addiu $3,$2,5
+i16: lw $2,16($30)
+i17: addiu $2,$2,9
+i18: lbu $2,0($2)
+i19: sb $2,0($3)
+i20: lw $2,16($30)
+i21: addiu $3,$2,9
+i22: lw $2,16($30)
+i23: addiu $2,$2,13
+i24: lbu $2,0($2)
+i25: sb $2,0($3)
+i26: lw $2,16($30)
+i28: lw $3,4($30)
+i27: addiu $2,$2,13
+i29: sb $3,0($2)
+i30: lw $2,16($30)
+i31: addiu $2,$2,10
+i32: lbu $2,0($2)
+i33: sw $2,4($30)
+i34: lw $2,16($30)
+i35: addiu $3,$2,10
+i36: lw $2,16($30)
+i37: addiu $2,$2,2
+i38: lbu $2,0($2)
+i39: sb $2,0($3)
+i40: lw $2,16($30)
+i42: lw $3,4($30)
+i41: addiu $2,$2,2
+i43: sb $3,0($2)
+i44: lw $2,16($30)
+i45: addiu $2,$2,3
+i46: lbu $2,0($2)
+i47: sw $2,0($30)
+i48: lw $2,16($30)
+i49: addiu $3,$2,3
+i50: lw $2,16($30)
+i51: addiu $2,$2,15
+i52: lbu $2,0($2)
+i53: sb $2,0($3)
+i54: lw $2,16($30)
+i55: addiu $3,$2,15
+i56: lw $2,16($30)
+i57: addiu $2,$2,11
+i58: lbu $2,0($2)
+i59: sb $2,0($3)
+i60: lw $2,16($30)
+i61: addiu $3,$2,11
+i62: lw $2,16($30)
+i63: addiu $2,$2,7
+i64: lbu $2,0($2)
+i65: sb $2,0($3)
+i66: lw $2,16($30)
+i68: lw $3,0($30)
+i67: addiu $2,$2,7
+i69: sb $3,0($2)
+i70: lw $2,16($30)
+i71: addiu $2,$2,14
+i72: lbu $2,0($2)
+i73: sw $2,0($30)
+i74: lw $2,16($30)
+i75: addiu $3,$2,14
+i76: lw $2,16($30)
+i77: addiu $2,$2,6
+i78: lbu $2,0($2)
+i79: sb $2,0($3)
+i80: lw $2,16($30)
+i82: lw $3,0($30)
+i81: addiu $2,$2,6
+i83: sb $3,0($2)
+i85: lw $30,12($29)
+i87: jr $31
+i86: addiu $29,$29,16
+---- BB with new scheduling: -----
+Begin BB0
+aes_shiftrows:
+i0 addiu $29,$29,65520
+i1 sw $30,12($29)
+i2 or $30,$29,$0
+i3 sw $4,16($30)
+i4 lw $2,16($30)
+i5 addiu $2,$2,1
+i6 lbu $2,0($2)
+i7 sw $2,4($30)
+i8 lw $2,16($30)
+i9 or $29,$30,$0
+i10 addiu $3,$2,1
+i11 lw $2,16($30)
+i12 addiu $2,$2,5
+i13 lbu $2,0($2)
+i14 sb $2,0($3)
+i15 lw $2,16($30)
+i16 addiu $3,$2,5
+i17 lw $2,16($30)
+i18 addiu $2,$2,9
+i19 lbu $2,0($2)
+i20 sb $2,0($3)
+i21 lw $2,16($30)
+i22 addiu $3,$2,9
+i23 lw $2,16($30)
+i24 addiu $2,$2,13
+i25 lbu $2,0($2)
+i26 sb $2,0($3)
+i27 lw $2,16($30)
+i28 lw $3,4($30)
+i29 addiu $2,$2,13
+i30 sb $3,0($2)
+i31 lw $2,16($30)
+i32 addiu $2,$2,10
+i33 lbu $2,0($2)
+i34 sw $2,4($30)
+i35 lw $2,16($30)
+i36 addiu $3,$2,10
+i37 lw $2,16($30)
+i38 addiu $2,$2,2
+i39 lbu $2,0($2)
+i40 sb $2,0($3)
+i41 lw $2,16($30)
+i42 lw $3,4($30)
+i43 addiu $2,$2,2
+i44 sb $3,0($2)
+i45 lw $2,16($30)
+i46 addiu $2,$2,3
+i47 lbu $2,0($2)
+i48 sw $2,0($30)
+i49 lw $2,16($30)
+i50 addiu $3,$2,3
+i51 lw $2,16($30)
+i52 addiu $2,$2,15
+i53 lbu $2,0($2)
+i54 sb $2,0($3)
+i55 lw $2,16($30)
+i56 addiu $3,$2,15
+i57 lw $2,16($30)
+i58 addiu $2,$2,11
+i59 lbu $2,0($2)
+i60 sb $2,0($3)
+i61 lw $2,16($30)
+i62 addiu $3,$2,11
+i63 lw $2,16($30)
+i64 addiu $2,$2,7
+i65 lbu $2,0($2)
+i66 sb $2,0($3)
+i67 lw $2,16($30)
+i68 lw $3,0($30)
+i69 addiu $2,$2,7
+i70 sb $3,0($2)
+i71 lw $2,16($30)
+i72 addiu $2,$2,14
+i73 lbu $2,0($2)
+i74 sw $2,0($30)
+i75 lw $2,16($30)
+i76 addiu $3,$2,14
+i77 lw $2,16($30)
+i78 addiu $2,$2,6
+i79 lbu $2,0($2)
+i80 sb $2,0($3)
+i81 lw $2,16($30)
+i82 lw $3,0($30)
+i83 addiu $2,$2,6
+i84 sb $3,0($2)
+i85 lw $30,12($29)
+i86 jr $31
+i87 addiu $29,$29,16
+End BB0
+
+----------nb_cycles apres scheduling : 141  -----------
+----- apres renommage ------
+Begin BB0
+aes_shiftrows:
+i0 addiu $29,$29,65520
+i1 sw $30,12($29)
+i2 or $30,$29,$0
+i3 sw $4,16($30)
+i4 lw $1,16($30)
+i5 addiu $5,$1,1
+i6 lbu $6,0($5)
+i7 sw $6,4($30)
+i8 lw $7,16($30)
+i9 or $29,$30,$0
+i10 addiu $3,$7,1
+i11 lw $8,16($30)
+i12 addiu $9,$8,5
+i13 lbu $10,0($9)
+i14 sb $10,0($3)
+i15 lw $11,16($30)
+i16 addiu $3,$11,5
+i17 lw $12,16($30)
+i18 addiu $13,$12,9
+i19 lbu $14,0($13)
+i20 sb $14,0($3)
+i21 lw $15,16($30)
+i22 addiu $3,$15,9
+i23 lw $16,16($30)
+i24 addiu $17,$16,13
+i25 lbu $18,0($17)
+i26 sb $18,0($3)
+i27 lw $19,16($30)
+i28 lw $3,4($30)
+i29 addiu $20,$19,13
+i30 sb $3,0($20)
+i31 lw $21,16($30)
+i32 addiu $22,$21,10
+i33 lbu $23,0($22)
+i34 sw $23,4($30)
+i35 lw $24,16($30)
+i36 addiu $3,$24,10
+i37 lw $25,16($30)
+i38 addiu $26,$25,2
+i39 lbu $27,0($26)
+i40 sb $27,0($3)
+i41 lw $28,16($30)
+i42 lw $3,4($30)
+i43 addiu $2,$28,2
+i44 sb $3,0($28)
+i45 lw $2,16($30)
+i46 addiu $2,$28,3
+i47 lbu $2,0($28)
+i48 sw $28,0($30)
+i49 lw $2,16($30)
+i50 addiu $3,$28,3
+i51 lw $2,16($30)
+i52 addiu $2,$28,15
+i53 lbu $2,0($28)
+i54 sb $28,0($3)
+i55 lw $2,16($30)
+i56 addiu $3,$28,15
+i57 lw $2,16($30)
+i58 addiu $2,$28,11
+i59 lbu $2,0($28)
+i60 sb $28,0($3)
+i61 lw $2,16($30)
+i62 addiu $3,$28,11
+i63 lw $2,16($30)
+i64 addiu $2,$28,7
+i65 lbu $2,0($28)
+i66 sb $28,0($3)
+i67 lw $2,16($30)
+i68 lw $3,0($30)
+i69 addiu $2,$28,7
+i70 sb $3,0($28)
+i71 lw $2,16($30)
+i72 addiu $2,$28,14
+i73 lbu $2,0($28)
+i74 sw $28,0($30)
+i75 lw $2,16($30)
+i76 addiu $3,$28,14
+i77 lw $2,16($30)
+i78 addiu $2,$28,6
+i79 lbu $2,0($28)
+i80 sb $28,0($3)
+i81 lw $2,16($30)
+i82 lw $3,0($30)
+i83 addiu $2,$28,6
+i84 sb $3,0($2)
+i85 lw $30,12($29)
+i86 jr $31
+i87 addiu $29,$29,16
+End BB0
+
+----nb_cycles apres renommage : 104   ----
+on ajoute un arc control 
+comput critical path apres renommage
+critical path : 60
+Scheduling 
+---- renamed BB with new scheduling: -----
+Begin BB0
+aes_shiftrows:
+i0 addiu $29,$29,65520
+i1 sw $30,12($29)
+i2 or $30,$29,$0
+i3 sw $4,16($30)
+i4 lw $1,16($30)
+i5 lw $8,16($30)
+i6 addiu $5,$1,1
+i7 lbu $6,0($5)
+i8 sw $6,4($30)
+i9 lw $7,16($30)
+i10 addiu $9,$8,5
+i11 lbu $10,0($9)
+i12 addiu $3,$7,1
+i13 sb $10,0($3)
+i14 lw $12,16($30)
+i15 lw $11,16($30)
+i16 addiu $13,$12,9
+i17 lbu $14,0($13)
+i18 addiu $3,$11,5
+i19 sb $14,0($3)
+i20 lw $16,16($30)
+i21 lw $15,16($30)
+i22 addiu $17,$16,13
+i23 lbu $18,0($17)
+i24 addiu $3,$15,9
+i25 sb $18,0($3)
+i26 lw $19,16($30)
+i27 lw $3,4($30)
+i28 addiu $20,$19,13
+i29 sb $3,0($20)
+i30 lw $21,16($30)
+i31 lw $25,16($30)
+i32 addiu $22,$21,10
+i33 lbu $23,0($22)
+i34 sw $23,4($30)
+i35 lw $24,16($30)
+i36 addiu $26,$25,2
+i37 lbu $27,0($26)
+i38 addiu $3,$24,10
+i39 sb $27,0($3)
+i40 lw $28,16($30)
+i41 lw $3,4($30)
+i42 sb $3,0($28)
+i43 addiu $2,$28,2
+i44 lw $2,16($30)
+i45 addiu $2,$28,3
+i46 lbu $2,0($28)
+i47 sw $28,0($30)
+i48 lw $2,16($30)
+i49 lw $2,16($30)
+i50 addiu $2,$28,15
+i51 lbu $2,0($28)
+i52 addiu $3,$28,3
+i53 sb $28,0($3)
+i54 lw $2,16($30)
+i55 lw $2,16($30)
+i56 addiu $2,$28,11
+i57 lbu $2,0($28)
+i58 addiu $3,$28,15
+i59 sb $28,0($3)
+i60 lw $2,16($30)
+i61 lw $2,16($30)
+i62 addiu $2,$28,7
+i63 lbu $2,0($28)
+i64 addiu $3,$28,11
+i65 sb $28,0($3)
+i66 lw $3,0($30)
+i67 lw $2,16($30)
+i68 sb $3,0($28)
+i69 addiu $2,$28,7
+i70 lw $2,16($30)
+i71 addiu $2,$28,14
+i72 lbu $2,0($28)
+i73 sw $28,0($30)
+i74 lw $2,16($30)
+i75 lw $2,16($30)
+i76 addiu $2,$28,6
+i77 lbu $2,0($28)
+i78 addiu $3,$28,14
+i79 sb $28,0($3)
+i80 lw $3,0($30)
+i81 lw $2,16($30)
+i82 addiu $2,$28,6
+i83 or $29,$30,$0
+i84 sb $3,0($2)
+i85 lw $30,12($29)
+i86 jr $31
+i87 addiu $29,$29,16
+End BB0
+
+----nb_cycles apres renommage et scheduling : 110----
+ gain sched : 2; gain renommage 37; gain renommage sched -6
+test vaut 0 
+========== Function 6===========
+============================
+---------- BB 0 -----------
+Begin BB0
+aes_shiftrows_inv:
+i0 addiu $29,$29,65520
+i1 sw $30,12($29)
+i2 or $30,$29,$0
+i3 sw $4,16($30)
+i4 lw $2,16($30)
+i5 addiu $2,$2,1
+i6 lbu $2,0($2)
+i7 sw $2,4($30)
+i8 lw $2,16($30)
+i9 addiu $3,$2,1
+i10 lw $2,16($30)
+i11 addiu $2,$2,13
+i12 lbu $2,0($2)
+i13 sb $2,0($3)
+i14 lw $2,16($30)
+i15 addiu $3,$2,13
+i16 lw $2,16($30)
+i17 addiu $2,$2,9
+i18 lbu $2,0($2)
+i19 sb $2,0($3)
+i20 lw $2,16($30)
+i21 addiu $3,$2,9
+i22 lw $2,16($30)
+i23 addiu $2,$2,5
+i24 lbu $2,0($2)
+i25 sb $2,0($3)
+i26 lw $2,16($30)
+i27 addiu $2,$2,5
+i28 lw $3,4($30)
+i29 sb $3,0($2)
+i30 lw $2,16($30)
+i31 addiu $2,$2,2
+i32 lbu $2,0($2)
+i33 sw $2,4($30)
+i34 lw $2,16($30)
+i35 addiu $3,$2,2
+i36 lw $2,16($30)
+i37 addiu $2,$2,10
+i38 lbu $2,0($2)
+i39 sb $2,0($3)
+i40 lw $2,16($30)
+i41 addiu $2,$2,10
+i42 lw $3,4($30)
+i43 sb $3,0($2)
+i44 lw $2,16($30)
+i45 addiu $2,$2,3
+i46 lbu $2,0($2)
+i47 sw $2,0($30)
+i48 lw $2,16($30)
+i49 addiu $3,$2,3
+i50 lw $2,16($30)
+i51 addiu $2,$2,7
+i52 lbu $2,0($2)
+i53 sb $2,0($3)
+i54 lw $2,16($30)
+i55 addiu $3,$2,7
+i56 lw $2,16($30)
+i57 addiu $2,$2,11
+i58 lbu $2,0($2)
+i59 sb $2,0($3)
+i60 lw $2,16($30)
+i61 addiu $3,$2,11
+i62 lw $2,16($30)
+i63 addiu $2,$2,15
+i64 lbu $2,0($2)
+i65 sb $2,0($3)
+i66 lw $2,16($30)
+i67 addiu $2,$2,15

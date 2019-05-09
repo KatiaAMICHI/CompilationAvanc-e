@@ -358,13 +358,14 @@ void Function::compute_dom() {
 					change = true;
 				}
 			}
-			if (change) {
-				for (int i = 0; i < nbr_BB(); i++) {
-					workinglist.push_back(bb->get_successor(i));
-				}
-			}
-
 		}
+		if (change) {
+			for (int i = 0; i < bb->get_nb_succ(); i++) {
+				workinglist.push_back(bb->get_successor(i));
+				}
+		}
+
+
 	}
 
 	// affichage du resultat
