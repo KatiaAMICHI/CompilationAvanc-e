@@ -1,4 +1,0 @@
-$ Make
-$ ./bin/cpp/test_dependance_instr src/examples/dep_inst.s 
-$ dot -Tpdf -o dfg.pdf tmp/dep_inst_func_0_dfg_bb0.dot
-$ evince dfg.pdf

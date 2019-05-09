@@ -1,0 +1,28 @@
+$ Make
+$ ./bin/cpp/test_dependance_instr src/examples/dep_inst.s 
+$ dot -Tpdf -o dfg.pdf tmp/dep_inst_func_0_dfg_bb0.dot
+$ evince dfg.pdf
+
+
+./bin/cpp/test_all_together src/examples/aes_O0.s |grep gain
+./bin/cpp/test_all_together src/examples/aes_O0.s ¦ grp gain >& res_gain
+
+
+./bin/cpp/test_def_use_bb src/examples/aes_O0.s 
+  507  dot -Tpdf cfg9aes.pdf tmp/aes_O0_cfg_func_9.dot 
+  508  dot -Tpdf -o cfg9aes.pdf tmp/aes_O0_cfg_func_9.dot 
+  509  open cfg9aes.pdf 
+  510  evince cfg9aes.pdf 
+  511  dot -Tpdf -o cfg9aes.pdf tmp/aes_O0_cfg_func_9.dot 
+  512  ls
+  513  evince cfg9aes.pdf 
+  514  evince cfg9aes.pdf 
+  515  dot -Tpdf -o cfg9aes.pdf tmp/aes_O0_cfg_func_9.dot 
+  516  evince cfg9aes.pdf 
+  517  ./bin/cpp/test_def_use_bb src/examples/aes_O0.s 
+  518  dot -Tpdf -o cfg9aes.pdf tmp/aes_O0_cfg_func_10.dot 
+  519  evince cfg9aes.pdf 
+  520  gdb bin/cpp/test_def_use_bb 
+  521  make
+  522  ./bin/cpp/test_def_use_bb src/examples/aes_O0.s 
+  523  gdb bin/cpp/test_def_use_bb 
