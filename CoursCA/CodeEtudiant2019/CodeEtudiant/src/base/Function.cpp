@@ -438,7 +438,6 @@ void Function::compute_live_var() {
 
 	while (!workinglist.empty()) {
 		change = 0;
-		// récupérer la première référence de l'entête de note workinglist
 		bb_curr = workinglist.front();
 		workinglist.pop_front();
 

@@ -579,44 +579,47 @@ void Basic_block::reg_rename(list<int> *frees){
 
   /* A REMPLIR */
   list<int> init;
-  vector<list<int>> DefInst (NB_REG,init);
+  vector<list<int>> renommables (NB_REG,init);
+  int new_num_reg;
+
   for (int i=0;i<get_nb_inst();i++){
-    OPRegister* dst = get_instruction_at_index(i)->get_reg_dst();
-    if (dst){
-      DefInst[dst->get_reg_num()].push_back(i);
-       }
-  }
-  for (int i=0;i<NB_REG;i++){
-      if (DefLiveOut[i] != -1){
-       DefInst[i].pop_back();
-    }
+    OPRegister* reg_dst = get_instruction_at_index(i)->get_reg_dst();
+    if (reg_dst)
+      renommables[reg_dst->get_reg_num()].push_back(i);
   }
 
-  int free;
-  for (list<int> list_instr : DefInst){
-    if (!list_instr.empty()){
-      for(int index : list_instr){
-        if (!frees->empty()){
-		    free = frees->front();
-        	frees->pop_front();
-        }else{
-        	return;
-        }
-        Instruction* ic = get_instruction_at_index(index);
-        int reg_n = ic->get_reg_dst()->get_reg_num();
-        ic->get_reg_dst()->set_reg_num(free);
+  for (int i=0;i<NB_REG;i++)
+      if (DefLiveOut[i] != -1)
+       renommables[i].pop_back();
+
+  for (list<int> insts : renommables){
+    if (!insts.empty() & !frees->empty())
+      for(int index : insts){
+    	new_num_reg = frees->front();
+		frees->pop_front();
+
+		Instruction* ic = get_instruction_at_index(index);
+
+		int reg_num = ic->get_reg_dst()->get_reg_num();
+
+		ic->get_reg_dst()->set_reg_num(new_num_reg);
+
         for (int j=0;j<ic->get_nb_succ();j++){
            if ((ic->get_succ_dep(j)->type == t_Dep::RAW)){
             OPRegister* src1 = ic->get_succ_dep(j)->inst->get_reg_src1();
+            if(src1 && src1->get_reg_num() == reg_num)
+              ic->get_succ_dep(j)->inst->get_reg_src1()->set_reg_num(new_num_reg);
+
             OPRegister* src2 = ic->get_succ_dep(j)->inst->get_reg_src2();
-            if(src1 && src1->get_reg_num() == reg_n)
-              ic->get_succ_dep(j)->inst->get_reg_src1()->set_reg_num(free);
-            if(src2 && src2->get_reg_num() == reg_n)
-              ic->get_succ_dep(j)->inst->get_reg_src2()->set_reg_num(free);
+            if(src2 && src2->get_reg_num() == reg_num)
+              ic->get_succ_dep(j)->inst->get_reg_src2()->set_reg_num(new_num_reg);
           }
         }
+        if (frees->empty())
+        	break;
+
       }
-    }
+
   }
   /* FIN A REMPLIR */
 

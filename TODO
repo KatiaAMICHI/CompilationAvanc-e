@@ -1,0 +1,7 @@
+a vérif :
+** fichier Fonction.cpp, méthode compute_live_var
+es ce qu'on doit vrm vérifier get_branch ou pas, si oui es ce que c'est sur les deux reg 2 et 29
+
+if (bb_curr->get_branch())
+				bb_curr->LiveOut[2] = 1;
+				bb_curr->LiveOut[29] = 1;
