@@ -1,0 +1,11 @@
+digraph G1 {
+node [shape = ellipse];
+i0 [label = "sub $4,$0,$5"] ;
+i1 [label = "sll $8,$3,4"] ;
+i1 ->  i4 [color = red, fontcolor = red, label= "RAW_1"];
+i1 ->  i3 [color = red, fontcolor = red, label= "RAW_1"];
+i4 [label = "sw $10,65532($8)"] ;
+i3 [label = "addiu $1,$8,65534"] ;
+i2 [label = "sw $15,12($7)"] ;
+i2 ->  i4 [color = green, fontcolor = green, label= "MEM1"];
+}

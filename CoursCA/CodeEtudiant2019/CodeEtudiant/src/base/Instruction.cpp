@@ -2,6 +2,17 @@
 #include <Enum_type.h>
 #include <stdlib.h> //pour atoi
 
+
+
+static std::map<t_Inst, std::map<t_Inst, int>> t_delay =
+  {
+    {t_Inst::ALU, { {t_Inst::ALU, 2}, {t_Inst::MEM, 2}, {t_Inst::BR, 3}, {t_Inst::OTHER, -1}, {t_Inst::BAD, -1}}},
+    {t_Inst::MEM, {{t_Inst::ALU, 3},{t_Inst::MEM, 3}, {t_Inst::BR, 4}, {t_Inst::OTHER, -1},{t_Inst::BAD, -1}}},
+    {t_Inst::BR,   {{t_Inst::ALU, 2},{t_Inst::MEM, 2}, {t_Inst::BR, 3}, {t_Inst::OTHER, -1},{t_Inst::BAD, -1}}},
+    {t_Inst::OTHER, {{t_Inst::ALU, -1},{t_Inst::MEM, -1}, {t_Inst::BR, -1}, {t_Inst::OTHER, -1},{t_Inst::BAD, -1}}},
+    {t_Inst::BAD, {{t_Inst::ALU, -1},{t_Inst::MEM, -1}, {t_Inst::BR, -1}, {t_Inst::OTHER, -1},{t_Inst::BAD, -1}}},
+  };
+
  Instruction* getInst(Line* l){
 	   if (l->isInst())
 	     return (dynamic_cast< Instruction * > (l));

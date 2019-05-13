@@ -1,0 +1,12 @@
+digraph G1 {
+node [shape = ellipse];
+i4 [label = " delayed slot : addiu $8,$2,%lo(tab)"] ;
+i3 ->  i4 [style = bold, dir= none, fontcolor = blue, color = blue, label= "delayed_slot"];
+i3 [label = "jal max_tab"] ;
+i0 [label = "lui $2,%hi(tab)"] ;
+i0 ->  i4 [color = red, fontcolor = red, label= "RAW_1"];
+i1 [label = "lui $3,0"] ;
+i1 ->  i2 [color = red, fontcolor = red, label= "RAW_1"];
+i2 [label = "ori $9,$3,7"] ;
+i2 ->  i3 [label= "CONTROL"];
+}
