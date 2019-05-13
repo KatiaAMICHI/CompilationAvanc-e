@@ -1,4 +1,2 @@
- gain sched : 2; gain renommage 0; gain renommage sched 3
- gain sched : 3; gain renommage 0; gain renommage sched 0
- gain sched : 0; gain renommage 0; gain renommage sched 0
- gain sched : 1; gain renommage 0; gain renommage sched 0
+---nb_cycles : 13 -----------
+---nb_cycles : 6 -----------

@@ -451,7 +451,6 @@ void Function::compute_live_var() {
 				}
 			}
 		} else {
-			if (bb_curr->get_branch())
 				bb_curr->LiveOut[2] = 1;
 				bb_curr->LiveOut[29] = 1;
 		}
