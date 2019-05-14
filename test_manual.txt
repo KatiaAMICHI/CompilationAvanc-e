@@ -1,0 +1,20 @@
+$ Make
+
+Test plot :
+$ ./bin/cpp/test_dependance_instr src/examples/dep_inst.s 
+$ dot -Tpdf -o dfg.pdf tmp/dep_inst_func_0_dfg_bb0.dot
+$ evince dfg.pdf
+
+
+./bin/cpp/test_def_use_bb src/examples/aes_O0.s 
+dot -Tpdf -o cfg9aes.pdf tmp/aes_O0_cfg_func_9.dot 
+open cfg9aes.pdf 
+evince cfg9aes.pdf 
+
+
+To get CFG graph for BB0 td2 : 
+dot -Tpdf -o cfg9aes.pdf tmp/test_td2_func_0_dfg_bb0.dot
+
+Vary 12, 5 (to have the sum of a column)
+cut -d' ' -f 12 file_asupp.txt | sed -e 's/;//g' | awk '{SUM += $0} END {print SUM}'
+
